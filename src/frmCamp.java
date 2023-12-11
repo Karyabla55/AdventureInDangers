@@ -54,7 +54,6 @@ public class frmCamp extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(640, 380));
 
         lblPlayerName.setText("Name:");
 
@@ -83,7 +82,7 @@ public class frmCamp extends javax.swing.JFrame {
         jLabel2.setText("/|\\");
 
             jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-            jLabel3.setText("/'\\");
+            jLabel3.setText("/ \\");
 
                 btnStore.setText("Store");
                 btnStore.addActionListener(new java.awt.event.ActionListener() {
