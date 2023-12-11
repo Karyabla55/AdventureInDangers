@@ -1,7 +1,7 @@
 
 
 
-public class frmRPG extends javax.swing.JFrame {
+public class frmCharacterCreation extends javax.swing.JFrame {
     Items itemB = new Bows(0);
     Items itemSw = new Swords(0);
     Items itemSt = new Staffs(0);
@@ -19,7 +19,7 @@ public class frmRPG extends javax.swing.JFrame {
     Jobs mage = new Mage(itemSt,0,SkillMa);
     Jobs martialArtis = new MartialArtist(itemG,0,SkillMr);
 
-    public frmRPG() {
+    public frmCharacterCreation() {
         initComponents();
         setLocationRelativeTo(null);
         setLbls();
@@ -108,7 +108,6 @@ public class frmRPG extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Adventure İn Dangers");
-        setPreferredSize(new java.awt.Dimension(640, 380));
 
         lblCharacterName.setText("Karakter ismi");
 
@@ -350,20 +349,21 @@ public class frmRPG extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmRPG.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCharacterCreation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmRPG.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCharacterCreation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmRPG.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCharacterCreation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmRPG.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmCharacterCreation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmRPG().setVisible(true);
+                new frmCharacterCreation().setVisible(true);
             }
         });
     }
