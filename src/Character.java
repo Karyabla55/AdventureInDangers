@@ -2,12 +2,13 @@
 public abstract class Character {
 
     private String name;
-    private int health;
+    private double health;
     private int gold;
     private int mana;
     private double damage;
     private int armor;
     private int level;
+    private int experience;
     private boolean holdWeapon;
     private String jobName;
     private Items item;
@@ -37,14 +38,14 @@ public abstract class Character {
     /**
      * @return the health
      */
-    public int getHealth() {
+    public double getHealth() {
         return health;
     }
 
     /**
      * @param health the health to set
      */
-    public void setHealth(int health) {
+    public void setHealth(double health) {
         this.health = health;
     }
 
@@ -188,6 +189,13 @@ public abstract class Character {
      */
     public void setWeaponType(String weaponType) {
         this.weaponType = weaponType;
+    }
+    public int getExperience() {
+        return experience;
+    }
+
+    public void setExperience(int experience) {
+        this.experience = experience;
     }
 
 }

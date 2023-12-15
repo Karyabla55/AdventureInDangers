@@ -13,11 +13,10 @@ public class Player extends Character {
         this.setItem(Job.item);
         this.setLevel(0);
         this.setWeaponType(Job.item.Type);
-        this.skills = new Skills[4];
+        this.skills = new Skills[2];
         this.skills[0] = Job.skills;
         this.skills[1] = Skills.emptySkill();
-        this.skills[2] = Skills.emptySkill();
-        this.skills[3] = Skills.emptySkill();
+        
        
     }
    
