@@ -83,7 +83,7 @@ public class frmStart extends javax.swing.JFrame {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
 
-        frmRPG.Run();
+        frmCharacterCreation.Run();
         this.dispose();
     }//GEN-LAST:event_btnStartActionPerformed
 
