@@ -10,6 +10,7 @@ public class MageSkills extends Skills{
         this.damage = (Item.damage)*Damage[Level];
         this.price = Price[Level];
         this.type = Item.Type;
+        
 
     }
     

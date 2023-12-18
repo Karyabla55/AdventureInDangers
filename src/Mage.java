@@ -4,6 +4,7 @@ public class Mage extends Jobs{
         this.name = "Mage";
         this.gold = 70;
         this.health = 20;
+        this.damage = Item.damage;
         this.mana = 30;
         this.armor = 20;
         this.holdWeapon = true;

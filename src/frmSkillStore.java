@@ -6,7 +6,7 @@ public class frmSkillStore extends javax.swing.JFrame {
     static Character player;
     DefaultListModel skill = new DefaultListModel();
     DefaultListModel playerSkill = new DefaultListModel();
-    Skills[] skills = new Skills[4];
+    Skills[] skills = new Skills[4]; //array list yapılacak
     /**
      * Creates new form frmSkillStore
      */
@@ -249,10 +249,10 @@ public class frmSkillStore extends javax.swing.JFrame {
             lblSkillPrice.setText("Skill Price:"+skills[sellingIndex].price);
         }
         if(playerIndex != -1 && playerIndex < player.skills.length){
-            lblPlayerSkillName.setText("Skill Name:"+skills[playerIndex].name);
-            lblPlayerSkillDamage.setText("Skill Damage:"+Double.toString(skills[playerIndex].damage) );
-            lblPlayerSkillType.setText("Skill Type:"+skills[playerIndex].type);
-            lblPlayerSkillPrice.setText("Skill Price:"+skills[playerIndex].price);
+            lblPlayerSkillName.setText("Skill Name:"+player.skills[playerIndex].name);
+            lblPlayerSkillDamage.setText("Skill Damage:"+Double.toString(player.skills[playerIndex].damage) );
+            lblPlayerSkillType.setText("Skill Type:"+player.skills[playerIndex].type);
+            lblPlayerSkillPrice.setText("Skill Price:"+player.skills[playerIndex].price);
         }
 
     }//GEN-LAST:event_btnShowSkillsActionPerformed

@@ -21,6 +21,7 @@ public class frmDungeon extends javax.swing.JFrame {
         btnFloor3 = new javax.swing.JButton();
         btnFloor4 = new javax.swing.JButton();
         btnFloor5 = new javax.swing.JButton();
+        btnCamp = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,6 +46,13 @@ public class frmDungeon extends javax.swing.JFrame {
             }
         });
 
+        btnCamp.setText("camp");
+        btnCamp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCampActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,6 +73,10 @@ public class frmDungeon extends javax.swing.JFrame {
                         .addComponent(btnFloor5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(153, 153, 153))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCamp)
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,7 +91,9 @@ public class frmDungeon extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFloor3)
                     .addComponent(btnFloor4))
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(btnCamp)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -92,6 +106,12 @@ public class frmDungeon extends javax.swing.JFrame {
     private void btnFloor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFloor5ActionPerformed
+
+    private void btnCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCampActionPerformed
+        // TODO add your handling code here:
+        frmCamp.Run(player);
+        this.dispose();
+    }//GEN-LAST:event_btnCampActionPerformed
 
    
     
@@ -129,6 +149,7 @@ public class frmDungeon extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCamp;
     private javax.swing.JButton btnFloor1;
     private javax.swing.JButton btnFloor2;
     private javax.swing.JButton btnFloor3;
