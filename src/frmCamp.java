@@ -98,6 +98,7 @@ public class frmCamp extends javax.swing.JFrame {
                     }
                 });
 
+                jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
                 jLabel4.setText("Made by Hişar");
 
                 javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,7 +147,7 @@ public class frmCamp extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel4))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblPlayerMP)

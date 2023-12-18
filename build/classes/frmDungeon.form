@@ -23,13 +23,84 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="141" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="btnFloor3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnFloor1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnFloor2" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnFloor4" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                      <Component id="btnFloor5" min="-2" pref="141" max="-2" attributes="0"/>
+                      <EmptySpace pref="101" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnFloor1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnFloor2" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="btnFloor5" min="-2" pref="83" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnFloor3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnFloor4" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="120" max="32767" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="btnFloor1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="1.Kat"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloor1ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFloor2">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="2.Kat"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFloor3">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="3.Kat"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFloor4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="5.Kat"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnFloor5">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Semibold" size="24" style="2"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="5.Kat"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloor5ActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
 </Form>
