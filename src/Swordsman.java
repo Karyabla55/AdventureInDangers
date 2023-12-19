@@ -7,6 +7,7 @@ public class Swordsman extends Jobs {
         this.mana = 50;
         this.armor = 20;
         this.holdWeapon = true;
+        this.damage = Item.damage;
         this.item = Item;
         this.skills = skill;
     }    

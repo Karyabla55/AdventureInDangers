@@ -20,16 +20,11 @@ public class frmStart extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     public void setBackground(){
-        
-      
-        
         try {
             backgroundImage = ImageIO.read(new File("./src/Images/Startbackground.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        
         
         JPanel contentPanel = new JPanel() {
             @Override

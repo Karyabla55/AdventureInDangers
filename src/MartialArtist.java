@@ -6,6 +6,7 @@ public class MartialArtist extends Jobs{
         this.health = 45;
         this.mana = 10;
         this.armor = 20;
+        this.damage = Item.damage;
         this.holdWeapon = true;
         this.item = Item;
         this.skills = skill;

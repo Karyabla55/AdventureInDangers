@@ -163,6 +163,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lblCharacterName">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Karakter ismi"/>
       </Properties>
     </Component>
@@ -205,101 +208,161 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblMageHP">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sa&#x11f;l&#x131;k Puan&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMageMP">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Mana Puan&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMageWT">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Silah Tipi:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMageGold">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Alt&#x131;n miktar&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMageArmor">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Armor: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblArcherHP">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sa&#x11f;l&#x131;k Puan&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblArcherMP">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Mana Puan&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblArcherWT">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Silah Tipi:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblArcherGold">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Alt&#x131;n miktar&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblArcherArmor">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Armor: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMartialArtistHP">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sa&#x11f;l&#x131;k Puan&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMartialArtistMP">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Mana Puan&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMartialArtistWT">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Silah Tipi:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMartialArtistGold">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Alt&#x131;n miktar&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMartialArtistArmor">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Armor: "/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSwordsmanHP">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Sa&#x11f;l&#x131;k Puan&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSwordsmanMP">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Mana Puan&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSwordsmanWT">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Silah Tipi:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSwordsmanGold">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Alt&#x131;n miktar&#x131;:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSwordsmanArmor">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Armor: "/>
       </Properties>
     </Component>

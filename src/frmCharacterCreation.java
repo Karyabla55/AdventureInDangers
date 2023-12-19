@@ -1,7 +1,19 @@
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.awt.image.BufferedImageOp;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
+
+
 
 
 public class frmCharacterCreation extends javax.swing.JFrame {
+    private BufferedImage backgroundImage;
+    private BufferedImage swordsmanImage;
+    
     Items itemB = new Bows(0);
     Items itemSw = new Swords(0);
     Items itemSt = new Staffs(0);
@@ -20,9 +32,11 @@ public class frmCharacterCreation extends javax.swing.JFrame {
     Jobs martialArtis = new MartialArtist(itemG,0,SkillMr);
 
     public frmCharacterCreation() {
+        setBackground();
         initComponents();
         setLocationRelativeTo(null);
         setLbls();
+        
     }
     
     public void setLbls(){
@@ -73,6 +87,27 @@ public class frmCharacterCreation extends javax.swing.JFrame {
         lblSwordsmanArmor.setText("Armor: "+swordsman.armor);
         
     }
+    
+    private void setBackground(){
+        try {
+            backgroundImage = ImageIO.read(new File("./src/Images/CharacterCreationBackground.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        JPanel contentPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(backgroundImage, 0, 0, getWidth(),getHeight(), this);
+            }
+        };
+        contentPanel.setLayout(null);
+        setContentPane(contentPanel);
+        
+        
+    }
+    
 
    
     @SuppressWarnings("unchecked")
@@ -109,6 +144,7 @@ public class frmCharacterCreation extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Adventure İn Dangers");
 
+        lblCharacterName.setForeground(new java.awt.Color(255, 255, 255));
         lblCharacterName.setText("Karakter ismi");
 
         txtCharacterName.addActionListener(new java.awt.event.ActionListener() {
@@ -145,44 +181,64 @@ public class frmCharacterCreation extends javax.swing.JFrame {
             }
         });
 
+        lblMageHP.setForeground(new java.awt.Color(255, 255, 255));
         lblMageHP.setText("Sağlık Puanı:");
 
+        lblMageMP.setForeground(new java.awt.Color(255, 255, 255));
         lblMageMP.setText("Mana Puanı:");
 
+        lblMageWT.setForeground(new java.awt.Color(255, 255, 255));
         lblMageWT.setText("Silah Tipi:");
 
+        lblMageGold.setForeground(new java.awt.Color(255, 255, 255));
         lblMageGold.setText("Altın miktarı:");
 
+        lblMageArmor.setForeground(new java.awt.Color(255, 255, 255));
         lblMageArmor.setText("Armor: ");
 
+        lblArcherHP.setForeground(new java.awt.Color(255, 255, 255));
         lblArcherHP.setText("Sağlık Puanı:");
 
+        lblArcherMP.setForeground(new java.awt.Color(255, 255, 255));
         lblArcherMP.setText("Mana Puanı:");
 
+        lblArcherWT.setForeground(new java.awt.Color(255, 255, 255));
         lblArcherWT.setText("Silah Tipi:");
 
+        lblArcherGold.setForeground(new java.awt.Color(255, 255, 255));
         lblArcherGold.setText("Altın miktarı:");
 
+        lblArcherArmor.setForeground(new java.awt.Color(255, 255, 255));
         lblArcherArmor.setText("Armor: ");
 
+        lblMartialArtistHP.setForeground(new java.awt.Color(255, 255, 255));
         lblMartialArtistHP.setText("Sağlık Puanı:");
 
+        lblMartialArtistMP.setForeground(new java.awt.Color(255, 255, 255));
         lblMartialArtistMP.setText("Mana Puanı:");
 
+        lblMartialArtistWT.setForeground(new java.awt.Color(255, 255, 255));
         lblMartialArtistWT.setText("Silah Tipi:");
 
+        lblMartialArtistGold.setForeground(new java.awt.Color(255, 255, 255));
         lblMartialArtistGold.setText("Altın miktarı:");
 
+        lblMartialArtistArmor.setForeground(new java.awt.Color(255, 255, 255));
         lblMartialArtistArmor.setText("Armor: ");
 
+        lblSwordsmanHP.setForeground(new java.awt.Color(255, 255, 255));
         lblSwordsmanHP.setText("Sağlık Puanı:");
 
+        lblSwordsmanMP.setForeground(new java.awt.Color(255, 255, 255));
         lblSwordsmanMP.setText("Mana Puanı:");
 
+        lblSwordsmanWT.setForeground(new java.awt.Color(255, 255, 255));
         lblSwordsmanWT.setText("Silah Tipi:");
 
+        lblSwordsmanGold.setForeground(new java.awt.Color(255, 255, 255));
         lblSwordsmanGold.setText("Altın miktarı:");
 
+        lblSwordsmanArmor.setForeground(new java.awt.Color(255, 255, 255));
         lblSwordsmanArmor.setText("Armor: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
