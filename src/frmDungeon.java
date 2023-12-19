@@ -1,10 +1,54 @@
 
+
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
+
+
 public class frmDungeon extends javax.swing.JFrame {
     public static Character player;
+    private BufferedImage backgroundImage;
     
     public frmDungeon() {
+        setBackground();
         initComponents();
         setLocationRelativeTo(null);
+    }
+    
+    private void setBackground(){
+        try {
+            switch (player.getJobName()) {
+                case "Archer":
+                    backgroundImage = ImageIO.read(new File("./src/Images/DungeonArcher.jpg"));
+                    break;
+                case "Swordsman":
+                    backgroundImage = ImageIO.read(new File("./src/Images/DungeonSwordsman.jpg"));
+                    break; 
+                case "Mage":
+                    backgroundImage = ImageIO.read(new File("./src/Images/DungeonMage.jpg"));
+                    break;
+                case "Martial Artist":
+                    backgroundImage = ImageIO.read(new File("./src/Images/DungeonMartialArtist.jpg"));
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        JPanel contentPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(backgroundImage, 0, 0, getWidth(),getHeight(), this);
+            }
+        };
+        contentPanel.setLayout(null);
+        setContentPane(contentPanel);
     }
 
     /**
@@ -36,9 +80,8 @@ public class frmDungeon extends javax.swing.JFrame {
 
         btnFloor3.setText("3.Kat");
 
-        btnFloor4.setText("5.Kat");
+        btnFloor4.setText("4.Kat");
 
-        btnFloor5.setFont(new java.awt.Font("Segoe UI Semibold", 2, 24)); // NOI18N
         btnFloor5.setText("5.Kat");
         btnFloor5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,42 +100,32 @@ public class frmDungeon extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnFloor3)
-                            .addComponent(btnFloor1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnFloor2)
-                            .addComponent(btnFloor4)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(btnFloor5, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(153, 153, 153))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(btnCamp)
-                .addGap(38, 38, 38))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                .addComponent(btnFloor1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFloor2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFloor3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFloor4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnFloor5)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
+                .addContainerGap(337, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnFloor1)
-                    .addComponent(btnFloor2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnFloor5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnFloor5)
+                    .addComponent(btnFloor4)
+                    .addComponent(btnFloor2)
                     .addComponent(btnFloor3)
-                    .addComponent(btnFloor4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                .addComponent(btnCamp)
+                    .addComponent(btnFloor1)
+                    .addComponent(btnCamp))
                 .addGap(20, 20, 20))
         );
 
