@@ -1,14 +1,22 @@
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.JPanel;
 
 
 
 public class frmStore extends javax.swing.JFrame {
+    private BufferedImage backgroundImage;
     DefaultListModel item = new DefaultListModel();
     Items[] weapons = new Items[4];
     
     public static Character player;
     public frmStore() {
+        setBackground();
         initComponents();
         setLocationRelativeTo(null);
         lstSellingItems.setModel(item);
@@ -33,8 +41,25 @@ public class frmStore extends javax.swing.JFrame {
         for (Items weapon : weapons) {
             item.addElement(weapon.name);
         }
-    
-}
+    }
+    private void setBackground(){
+        try {
+            backgroundImage = ImageIO.read(new File("./src/Images/StoreBackground.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        JPanel contentPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(backgroundImage, 0, 0, getWidth(),getHeight(), this);
+            }
+        };
+        contentPanel.setLayout(null);
+        setContentPane(contentPanel);
+
+    }
     
 
     /**
@@ -87,16 +112,22 @@ public class frmStore extends javax.swing.JFrame {
             }
         });
 
+        lblItemName.setForeground(new java.awt.Color(255, 255, 255));
         lblItemName.setText("Weapon Name:");
 
+        lblItemDMG.setForeground(new java.awt.Color(255, 255, 255));
         lblItemDMG.setText("Weapon Damage:");
 
+        lblItemType.setForeground(new java.awt.Color(255, 255, 255));
         lblItemType.setText("Weapon Type:");
 
+        lblPlayerItemName.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerItemName.setText("Weapon Name:");
 
+        lblPlayerItemDMG.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerItemDMG.setText("Weapon Damage:");
 
+        lblPlayerItemType.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerItemType.setText("Weapon Type: ");
 
         btnShow.setText("Show");
@@ -113,8 +144,10 @@ public class frmStore extends javax.swing.JFrame {
             }
         });
 
+        lblPlayerItemPrice.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerItemPrice.setText("Price: ");
 
+        lblItemPrice.setForeground(new java.awt.Color(255, 255, 255));
         lblItemPrice.setText("Price:");
 
         btnSkillStore.setText("Skills");
@@ -124,6 +157,7 @@ public class frmStore extends javax.swing.JFrame {
             }
         });
 
+        lblPlayerGold.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerGold.setText("Gold:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -170,17 +204,7 @@ public class frmStore extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnBuy)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSell)
-                        .addGap(5, 5, 5)
-                        .addComponent(btnShow))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(lblPlayerItemName)
@@ -190,8 +214,19 @@ public class frmStore extends javax.swing.JFrame {
                         .addComponent(lblPlayerItemType)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblPlayerItemPrice)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblPlayerGold)))
+                        .addGap(26, 26, 26)
+                        .addComponent(lblPlayerGold))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addComponent(btnBuy)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnSell)
+                            .addGap(5, 5, 5)
+                            .addComponent(btnShow))))
                 .addGap(18, 18, 18)
                 .addComponent(lblItemName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

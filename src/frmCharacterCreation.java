@@ -101,8 +101,7 @@ public class frmCharacterCreation extends javax.swing.JFrame {
         };
         contentPanel.setLayout(null);
         setContentPane(contentPanel);
-        
-        
+
     }
     
 

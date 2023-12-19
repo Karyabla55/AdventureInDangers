@@ -1,8 +1,15 @@
 
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
+import javax.swing.JPanel;
 
 
 public class frmSkillStore extends javax.swing.JFrame {
+    private BufferedImage backgroundImage;
     static Character player;
     DefaultListModel skill = new DefaultListModel();
     DefaultListModel playerSkill = new DefaultListModel();
@@ -11,6 +18,7 @@ public class frmSkillStore extends javax.swing.JFrame {
      * Creates new form frmSkillStore
      */
     public frmSkillStore() {
+        setBackground();
         initComponents();
         setLocationRelativeTo(null);
         lstSelllingSkills.setModel(skill);
@@ -35,6 +43,25 @@ public class frmSkillStore extends javax.swing.JFrame {
         for(Skills sSkills : skills){
            skill.addElement(sSkills.name);
         }
+    }
+    
+    private void setBackground(){
+        try {
+            backgroundImage = ImageIO.read(new File("./src/Images/SkillStoreBackground.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        JPanel contentPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(backgroundImage, 0, 0, getWidth(),getHeight(), this);
+            }
+        };
+        contentPanel.setLayout(null);
+        setContentPane(contentPanel);
+
     }
 
     /**
@@ -97,10 +124,13 @@ public class frmSkillStore extends javax.swing.JFrame {
             }
         });
 
+        lblSkillName.setForeground(new java.awt.Color(255, 255, 255));
         lblSkillName.setText("Skill Name");
 
+        lblSkillDamage.setForeground(new java.awt.Color(255, 255, 255));
         lblSkillDamage.setText("Skill Damage");
 
+        lblSkillPrice.setForeground(new java.awt.Color(255, 255, 255));
         lblSkillPrice.setText("Skill Price");
 
         lstPlayerSkills.setModel(new javax.swing.AbstractListModel<String>() {
@@ -110,10 +140,13 @@ public class frmSkillStore extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lstPlayerSkills);
 
+        lblPlayerSkillPrice.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerSkillPrice.setText("Skill Price:");
 
+        lblPlayerSkillName.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerSkillName.setText("Skill Name:");
 
+        lblPlayerSkillDamage.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerSkillDamage.setText("Skill Damage:");
 
         lstSelllingSkills.setModel(new javax.swing.AbstractListModel<String>() {
@@ -130,8 +163,10 @@ public class frmSkillStore extends javax.swing.JFrame {
             }
         });
 
+        lblSkillType.setForeground(new java.awt.Color(255, 255, 255));
         lblSkillType.setText("Skill Type:");
 
+        lblPlayerSkillType.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerSkillType.setText("Skill Type:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,20 +210,21 @@ public class frmSkillStore extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addComponent(btnBuy)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnSell)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnShowSkills))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnBuy)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSell)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnShowSkills))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblSkillName)
