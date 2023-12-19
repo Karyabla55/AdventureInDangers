@@ -1,7 +1,6 @@
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.awt.image.BufferedImageOp;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
@@ -12,8 +11,6 @@ import javax.swing.JPanel;
 
 public class frmCharacterCreation extends javax.swing.JFrame {
     private BufferedImage backgroundImage;
-    private BufferedImage swordsmanImage;
-    
     Items itemB = new Bows(0);
     Items itemSw = new Swords(0);
     Items itemSt = new Staffs(0);
