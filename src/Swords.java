@@ -1,7 +1,7 @@
 
 public class Swords extends Items{
     
-    String[] Name = {"Sıradan Kılıc","Kemik Kılıc"};
+    String[] Name = {"Sıradan Kılıc","Kemik Kılıc","Demir kılıç","Obsidyen kılıç"};
     int[] Price = {20,60,70,80};
     int[] Damage = {15,20,50,90};
     public Swords(int Level){

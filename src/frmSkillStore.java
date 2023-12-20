@@ -37,11 +37,34 @@ public class frmSkillStore extends javax.swing.JFrame {
     }
     
     private void setSellingSkillList(){
-        skills.add(new ArcherSkills(0));
-        skills[0] = new ArcherSkills(player.getItem(), 0);
-        skills[1] = new ArcherSkills(player.getItem(), 1);
-        skills[2] = new ArcherSkills(player.getItem(), 2);
-        skills[3] = new ArcherSkills(player.getItem(), 3);
+        switch (player.getJobName()){
+        case "Archer":
+            skills.add(new ArcherSkills(player.getItem(),0));
+            skills.add(new ArcherSkills(player.getItem(),1));
+            skills.add(new ArcherSkills(player.getItem(),2));
+            skills.add(new ArcherSkills(player.getItem(),3));
+            break;
+        case "Swordsman":
+            skills.add(new SwordmanSkills(player.getItem(),0));
+            skills.add(new SwordmanSkills(player.getItem(),1));
+            skills.add(new SwordmanSkills(player.getItem(),2));
+            skills.add(new SwordmanSkills(player.getItem(),3));
+            break;
+        case "MartialArtistSkills":
+            skills.add(new MartialArtistSkills(player.getItem(),0));
+            skills.add(new MartialArtistSkills(player.getItem(),1));
+            skills.add(new MartialArtistSkills(player.getItem(),2));
+            skills.add(new MartialArtistSkills(player.getItem(),3));
+            break;
+        case "MageSkills":
+            skills.add(new MageSkills(player.getItem(),0));
+            skills.add(new MageSkills(player.getItem(),1));
+            skills.add(new MageSkills(player.getItem(),2));
+            skills.add(new MageSkills(player.getItem(),3));
+            
+        
+    }
+       
         
         for(Skills sSkills : skills){
            skill.addElement(sSkills.name);
@@ -281,11 +304,11 @@ public class frmSkillStore extends javax.swing.JFrame {
         int sellingIndex = lstSelllingSkills.getSelectedIndex();
         int playerIndex = lstPlayerSkills.getSelectedIndex();
         
-        if (sellingIndex != -1 && sellingIndex < skills.length) {
-            lblSkillName.setText("Skill Name:"+skills[sellingIndex].name);
-            lblSkillDamage.setText("Skill Damage:"+Double.toString(skills[sellingIndex].damage) );
-            lblSkillType.setText("Skill Type:"+skills[sellingIndex].type);
-            lblSkillPrice.setText("Skill Price:"+skills[sellingIndex].price);
+        if (sellingIndex != -1 && sellingIndex < skills.size()) {
+            lblSkillName.setText("Skill Name:"+skills.get(sellingIndex).name);
+            lblSkillDamage.setText("Skill Damage:"+Double.toString(skills.get(sellingIndex).damage) );
+            lblSkillType.setText("Skill Type:"+skills.get(sellingIndex).type);
+            lblSkillPrice.setText("Skill Price:"+skills.get(sellingIndex).price);
         }
         if(playerIndex != -1 && playerIndex < player.skills.length){
             lblPlayerSkillName.setText("Skill Name:"+player.skills[playerIndex].name);

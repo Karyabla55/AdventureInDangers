@@ -1,7 +1,7 @@
 
 public class Gloves extends Items {
     
-    String[] Name = {"Sıradan Eldiven","Kemik Eldiven"};
+    String[] Name = {"Sıradan Eldiven","Kemik Eldiven","Demir eldiven","Obsidyen eldiven"};
     int[] Price = {20,60,70,80};
     int[] Damage = {20,20,50,90};
     public Gloves(int Level){

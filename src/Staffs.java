@@ -1,7 +1,7 @@
 
 public class Staffs extends Items {
     
-    String[] Name = {"Sıradan Asa","Kemik Asa"};
+    String[] Name = {"Sıradan Asa","Kemik Asa","Demir Asa","Obsidyen Asa"};
     int[] Price = {20,60,70,80};
     int[] Damage = {15,20,50,90};
     public Staffs(int Level){
