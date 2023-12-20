@@ -3,16 +3,18 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
+import java.util.ArrayList;
 
 
 
 public class frmStore extends javax.swing.JFrame {
     private BufferedImage backgroundImage;
     DefaultListModel item = new DefaultListModel();
-    Items[] weapons = new Items[4];
+    ArrayList<Items> weapons = new ArrayList<>(); 
     
     public static Character player;
     public frmStore() {
@@ -33,11 +35,28 @@ public class frmStore extends javax.swing.JFrame {
         lblPlayerGold.setText("Gold:" +Integer.toString(player.getGold()));
     }
     private void setModel(){
+        weapons.add(new Bows(0));
+        weapons.add(new Bows(1));
+        weapons.add(new Bows(2));
+        weapons.add(new Bows(3));
         
-        weapons[0] = new Bows(0);
-        weapons[1] = new Bows(1);
-        weapons[2] = new Bows(2);
-        weapons[3] = new Bows(3);
+        weapons.add(new Swords(0));
+        weapons.add(new Swords(1));
+        weapons.add(new Swords(2));
+        weapons.add(new Swords(3));
+        
+        weapons.add(new Gloves(0));
+        weapons.add(new Gloves(1));
+        weapons.add(new Gloves(2));
+        weapons.add(new Gloves(3));
+
+        weapons.add(new Staffs(0));
+        weapons.add(new Staffs(1));
+        weapons.add(new Staffs(2));
+        weapons.add(new Staffs(3));
+
+        
+        
         for (Items weapon : weapons) {
             item.addElement(weapon.name);
         }
@@ -249,12 +268,12 @@ public class frmStore extends javax.swing.JFrame {
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
         int index = lstSellingItems.getSelectedIndex();
-        if(index != -1 && index < weapons.length){
-            if(weapons[index].Type == player.getWeaponType()){
+        if(index != -1 && index < weapons.size()){
+            if(weapons.get(index).Type == player.getWeaponType()){
                 if(player.isHoldWeapon() == false){
-                    if(weapons[index].price <= player.getGold()){
-                    player.setGold(player.getGold()-weapons[index].price);
-                    player.setItem(weapons[index]);
+                    if(weapons.get(index).price <= player.getGold()){
+                    player.setGold(player.getGold()-weapons.get(index).price);
+                    player.setItem(weapons.get(index));
                     player.setWeapon(true);
                     setLbls();
                     }
@@ -279,11 +298,11 @@ public class frmStore extends javax.swing.JFrame {
         
         int index = lstSellingItems.getSelectedIndex();
         
-        if (index != -1 && index < weapons.length) {
-            lblItemName.setText("Weapon Name:"+weapons[index].name);
-            lblItemDMG.setText("Weapon Damage:"+Integer.toString(weapons[index].damage) );
-            lblItemType.setText("Weapon Type:"+weapons[index].Type);
-            lblItemPrice.setText("Price:"+weapons[index].price);
+        if (index != -1 && index < weapons.size()) {
+            lblItemName.setText("Weapon Name:"+weapons.get(index).name);
+            lblItemDMG.setText("Weapon Damage:"+Integer.toString(weapons.get(index).damage) );
+            lblItemType.setText("Weapon Type:"+weapons.get(index).Type);
+            lblItemPrice.setText("Price:"+weapons.get(index).price);
         }
 
     }//GEN-LAST:event_btnShowActionPerformed

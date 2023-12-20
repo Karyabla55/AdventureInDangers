@@ -6,6 +6,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
+import java.util.ArrayList;
+
 
 
 public class frmSkillStore extends javax.swing.JFrame {
@@ -13,7 +15,7 @@ public class frmSkillStore extends javax.swing.JFrame {
     static Character player;
     DefaultListModel skill = new DefaultListModel();
     DefaultListModel playerSkill = new DefaultListModel();
-    Skills[] skills = new Skills[4]; //array list yapılacak
+    ArrayList <Skills> skills = new ArrayList<>();
     /**
      * Creates new form frmSkillStore
      */
@@ -35,6 +37,7 @@ public class frmSkillStore extends javax.swing.JFrame {
     }
     
     private void setSellingSkillList(){
+        skills.add(new ArcherSkills(0));
         skills[0] = new ArcherSkills(player.getItem(), 0);
         skills[1] = new ArcherSkills(player.getItem(), 1);
         skills[2] = new ArcherSkills(player.getItem(), 2);
