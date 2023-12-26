@@ -7,6 +7,7 @@
  *
  * @author zeki1
  */
-public class Battlefield {
+public class Battlefield extends frmBattelfield{
+    
     
 }
