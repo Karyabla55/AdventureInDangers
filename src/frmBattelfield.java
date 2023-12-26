@@ -12,10 +12,12 @@ import javax.swing.JPanel;
 public class frmBattelfield extends javax.swing.JFrame {
     static Character player;
     static Character enemy;
+    Battlefield battlefield;
     private BufferedImage backgroundImage;
     public frmBattelfield() {
         initComponents();
         setLocationRelativeTo(null);
+        battlefield = new Battlefield(player, enemy);
         
     }
     
@@ -98,6 +100,7 @@ public class frmBattelfield extends javax.swing.JFrame {
         });
 
         prgbPlayerHealth.setForeground(new java.awt.Color(153, 0, 51));
+        prgbPlayerHealth.setMaximum((int)player.getHealth());
 
         prgbPlayerMana.setForeground(new java.awt.Color(0, 51, 255));
 
@@ -183,7 +186,10 @@ public class frmBattelfield extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUseSkillActionPerformed
 
     private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
-        // TODO add your handling code here:
+        enemy=battlefield.playerAttack();
+        player= battlefield.enemyBattle();
+        prgbPlayerHealth.setValue((int)player.getHealth());
+        prgbEnemyHealth.setValue((int)enemy.getHealth());
     }//GEN-LAST:event_btnAttackActionPerformed
 
     private void btnRunAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunAwayActionPerformed

@@ -7,8 +7,17 @@ public class Battlefield extends frmBattelfield{
         this.enemy  = Enemy;
     }
     
-    public void deneme(){
+    public Character playerAttack(){
+        enemy.setHealth(enemy.getHealth()-player.getDamage());
+        return enemy;
+    }
+    public Character playerSkill(){
+        enemy.setHealth(enemy.getHealth()-player.getDamage());
+        return enemy;
+    }
+    public Character enemyBattle(){
         
+        return player;
     }
 
     
