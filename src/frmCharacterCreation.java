@@ -143,6 +143,7 @@ public class frmCharacterCreation extends javax.swing.JFrame {
         lblCharacterName.setForeground(new java.awt.Color(255, 255, 255));
         lblCharacterName.setText("Karakter ismi");
 
+        txtCharacterName.setToolTipText("Karakterinizizn ismini giriniz");
         txtCharacterName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCharacterNameActionPerformed(evt);

@@ -50,7 +50,7 @@ public class frmSkillStore extends javax.swing.JFrame {
             skills.add(new SwordmanSkills(player.getItem(),2));
             skills.add(new SwordmanSkills(player.getItem(),3));
             break;
-        case "MartialArtistSkills":
+        case "Martial Artist":
             skills.add(new MartialArtistSkills(player.getItem(),0));
             skills.add(new MartialArtistSkills(player.getItem(),1));
             skills.add(new MartialArtistSkills(player.getItem(),2));
@@ -61,6 +61,7 @@ public class frmSkillStore extends javax.swing.JFrame {
             skills.add(new MageSkills(player.getItem(),1));
             skills.add(new MageSkills(player.getItem(),2));
             skills.add(new MageSkills(player.getItem(),3));
+            break;
             
         
     }

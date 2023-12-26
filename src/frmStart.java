@@ -3,15 +3,17 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.sound.sampled.*;
 import javax.swing.JPanel;
 
 
 public class frmStart extends javax.swing.JFrame {
     
-    
-    
+    Clip clip;
+    AudioInputStream sound;
     private BufferedImage backgroundImage;
     
 
@@ -22,6 +24,7 @@ public class frmStart extends javax.swing.JFrame {
         setBackground();
         initComponents();
         setLocationRelativeTo(null);
+        setBackgroundMusic();
     }
     public void setBackground(){
         try {
@@ -39,6 +42,17 @@ public class frmStart extends javax.swing.JFrame {
         };
         contentPanel.setLayout(null);
         setContentPane(contentPanel);
+    }
+    public void setBackgroundMusic() {
+        try {
+            File file = new File("./src/Sounds/ThemeSong.wav");
+            sound = AudioSystem.getAudioInputStream(file);
+            clip = AudioSystem.getClip();
+            clip.open(sound);
+        } catch (Exception e) {
+            System.out.println("Dosya bulunamadı");
+        }
+        clip.start();
     }
     
     
@@ -122,6 +136,13 @@ public class frmStart extends javax.swing.JFrame {
 
         frmCharacterCreation.Run();
         this.dispose();
+        try {
+            sound.close();
+        } catch (IOException ex) {
+            Logger.getLogger(frmStart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        clip.close();
+        clip.stop();
     }//GEN-LAST:event_btnStartActionPerformed
 
     /**
