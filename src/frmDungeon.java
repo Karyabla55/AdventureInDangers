@@ -133,7 +133,8 @@ public class frmDungeon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFloor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor1ActionPerformed
-        // TODO add your handling code here:
+        frmBattelfield.Run(player);
+        this.dispose();
     }//GEN-LAST:event_btnFloor1ActionPerformed
 
     private void btnFloor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor5ActionPerformed
