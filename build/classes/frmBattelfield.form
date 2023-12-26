@@ -71,7 +71,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="prgbPlayerHealth" min="-2" pref="12" max="-2" attributes="0"/>
@@ -83,7 +83,7 @@
                           <Group type="102" attributes="0">
                               <Component id="prgbEnemyHealth" min="-2" pref="12" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="prgbEnemyMana" min="-2" pref="12" max="-2" attributes="0"/>
+                              <Component id="prgbEnemyMana" max="32767" attributes="0"/>
                           </Group>
                           <Component id="lblPlayerHit1" alignment="0" min="-2" pref="12" max="-2" attributes="0"/>
                       </Group>
@@ -120,9 +120,6 @@
           </StringArray>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
@@ -131,16 +128,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Use Skill"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnUseSkillActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAttack">
       <Properties>
         <Property name="text" type="java.lang.String" value="Attack"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAttackActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnRunAway">
       <Properties>
         <Property name="text" type="java.lang.String" value="Run away"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRunAwayActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JProgressBar" name="prgbPlayerHealth">
       <Properties>
@@ -148,9 +154,6 @@
           <Color blue="33" green="0" red="99" type="rgb"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="prgbPlayerHealthStateChanged"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JProgressBar" name="prgbPlayerMana">
       <Properties>
