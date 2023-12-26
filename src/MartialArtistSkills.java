@@ -1,6 +1,6 @@
 
 public class MartialArtistSkills extends Skills {
-    String[] Name = {"Sert Yumruk","Seri Yumruklar","Demir Yay","Obsidyen Yay"};
+    String[] Name = {"Sert Yumruk","Seri Yumruklar","Ölümcül Tekme","Çift Kroşe"};
     int[] Price = {20,60,70,80};
     Double[] Damage = {3.0,1.5,50.0,90.0};
 
