@@ -12,12 +12,13 @@ import javax.swing.JPanel;
 public class frmBattelfield extends javax.swing.JFrame {
     static Character player;
     static Character enemy;
-    Battlefield battlefield;
+    static Battlefield battlefield;
     private BufferedImage backgroundImage;
     public frmBattelfield() {
+        setBackground();
         initComponents();
         setLocationRelativeTo(null);
-        battlefield = new Battlefield(player, enemy);
+        
         
     }
     
@@ -34,7 +35,7 @@ public class frmBattelfield extends javax.swing.JFrame {
                     backgroundImage = ImageIO.read(new File("./src/Images/DungeonSwordsman.jpg"));
                     break; 
                 case "Mage":
-                    backgroundImage = ImageIO.read(new File("./src/Images/DungeonMage.jpg"));
+                    backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMage.jpg"));
                     break;
                 case "Martial Artist":
                     backgroundImage = ImageIO.read(new File("./src/Images/DungeonMartialArtist.jpg"));
@@ -73,6 +74,7 @@ public class frmBattelfield extends javax.swing.JFrame {
         lblPlayerHit = new javax.swing.JLabel();
         lblPlayerHit1 = new javax.swing.JLabel();
         lblPlayerHit2 = new javax.swing.JLabel();
+        lblActionEvents = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -120,6 +122,8 @@ public class frmBattelfield extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnRunAway)
+                        .addGap(66, 66, 66)
+                        .addComponent(lblActionEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -174,7 +178,8 @@ public class frmBattelfield extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAttack)
-                    .addComponent(btnRunAway))
+                    .addComponent(btnRunAway)
+                    .addComponent(lblActionEvents))
                 .addGap(26, 26, 26))
         );
 
@@ -187,6 +192,7 @@ public class frmBattelfield extends javax.swing.JFrame {
 
     private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
         enemy=battlefield.playerAttack();
+        lblActionEvents.setText("Düşmana "+player.getDamage()+" vurdunuz");
         player= battlefield.enemyBattle();
         prgbPlayerHealth.setValue((int)player.getHealth());
         prgbEnemyHealth.setValue((int)enemy.getHealth());
@@ -226,7 +232,11 @@ public class frmBattelfield extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                System.out.println("work");
+                battlefield = new Battlefield(player, enemy);
+                
                 new frmBattelfield().setVisible(true);
+                System.out.println("Work-2");
             }
         });
     }
@@ -236,6 +246,7 @@ public class frmBattelfield extends javax.swing.JFrame {
     private javax.swing.JButton btnRunAway;
     private javax.swing.JButton btnUseSkill;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel lblActionEvents;
     private javax.swing.JLabel lblPlayerHit;
     private javax.swing.JLabel lblPlayerHit1;
     private javax.swing.JLabel lblPlayerHit2;

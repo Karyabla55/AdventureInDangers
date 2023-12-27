@@ -28,6 +28,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btnRunAway" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <Component id="lblActionEvents" min="-2" pref="273" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
@@ -102,6 +104,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnAttack" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnRunAway" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblActionEvents" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
@@ -192,6 +195,8 @@
           <Color blue="33" green="33" red="ff" type="rgb"/>
         </Property>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblActionEvents">
     </Component>
   </SubComponents>
 </Form>
