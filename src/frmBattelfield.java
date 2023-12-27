@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -14,11 +16,14 @@ public class frmBattelfield extends javax.swing.JFrame {
     static Character enemy;
     static Battlefield battlefield;
     private BufferedImage backgroundImage;
+    DefaultComboBoxModel model = new DefaultComboBoxModel();
     public frmBattelfield() {
         setBackground();
         initComponents();
         setLocationRelativeTo(null);
-        
+        cmbPlayerSkills.setModel(model);
+        setLbls();
+        setComboBox();
         
     }
     
@@ -35,7 +40,13 @@ public class frmBattelfield extends javax.swing.JFrame {
                     backgroundImage = ImageIO.read(new File("./src/Images/DungeonSwordsman.jpg"));
                     break; 
                 case "Mage":
-                    backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMage.jpg"));
+                    if(enemy.getName().equals("vampir")){
+                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
+                    }
+                    else if(enemy.getName().equals("kurt adam")){
+                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
+                    }
+                    
                     break;
                 case "Martial Artist":
                     backgroundImage = ImageIO.read(new File("./src/Images/DungeonMartialArtist.jpg"));
@@ -57,13 +68,53 @@ public class frmBattelfield extends javax.swing.JFrame {
         contentPanel.setLayout(null);
         setContentPane(contentPanel);
     }
+    
+    private void setLbls(){
+        prgbPlayerHealth.setValue((int)player.getHealth());
+        prgbPlayerMana.setValue((int)player.getMana());
+        prgbEnemyHealth.setValue((int)enemy.getHealth());
+        prgbEnemyMana.setValue((int)enemy.getMana());
+    }
+    private void setComboBox(){
+        model.addElement(player.skills[0].name);
+        model.addElement(player.skills[1].name);
+
+    }
+    private void runAwayDialog(){
+        // Seçeneklerinizi bir dizi olarak tanımlayın
+        Object[] options = {"Evet", "Hayır"};
+        // Kullanıcının seçimini almak için bir dialog oluşturun
+        int selectedOptionIndex = JOptionPane.showOptionDialog(
+                null,                   // Parent component (null, ekranda ortalanır)
+                "Kaç",   // Dialog içeriği
+                "Bu eylemi gerçekleştirecekmisin?",           // Dialog başlığı
+                JOptionPane.DEFAULT_OPTION, // Mesaj tipi
+                JOptionPane.QUESTION_MESSAGE, // İkon tipi
+                null,                   // Seçenekleri içeren dizi
+                options,                // Seçeneklerinizi içeren dizi
+                options[0]);            // Varsayılan seçenek
+
+        // Kullanıcının seçtiği seçeneği yazdırın
+        if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
+            if(selectedOptionIndex == 0){
+                frmCamp.Run(player);
+            this.dispose();
+            }
+            else{
+                
+            }
+            
+        } else {
+            System.out.println("Hiçbir seçenek seçilmedi.");
+        }
+    }
 
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbPlayerSkills = new javax.swing.JComboBox<>();
         btnUseSkill = new javax.swing.JButton();
         btnAttack = new javax.swing.JButton();
         btnRunAway = new javax.swing.JButton();
@@ -75,12 +126,15 @@ public class frmBattelfield extends javax.swing.JFrame {
         lblPlayerHit1 = new javax.swing.JLabel();
         lblPlayerHit2 = new javax.swing.JLabel();
         lblActionEvents = new javax.swing.JLabel();
+        lblEnemyName = new javax.swing.JLabel();
+        lblPlayerName = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbPlayerSkills.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnUseSkill.setText("Use Skill");
+        btnUseSkill.setToolTipText("Yeteneği seçtikten sonra kullabilirsiniz");
         btnUseSkill.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUseSkillActionPerformed(evt);
@@ -105,13 +159,25 @@ public class frmBattelfield extends javax.swing.JFrame {
         prgbPlayerHealth.setMaximum((int)player.getHealth());
 
         prgbPlayerMana.setForeground(new java.awt.Color(0, 51, 255));
+        prgbPlayerMana.setMaximum((int)player.getMana()
+        );
 
-        prgbEnemyHealth.setForeground(new java.awt.Color(204, 0, 51));
+        prgbEnemyHealth.setForeground(new java.awt.Color(153, 0, 0));
+        prgbEnemyHealth.setMaximum((int)enemy.getHealth());
 
         prgbEnemyMana.setForeground(new java.awt.Color(204, 0, 51));
+        prgbEnemyMana.setMaximum(enemy.getMana());
 
+        lblPlayerHit1.setBackground(new java.awt.Color(255, 255, 255));
+        lblPlayerHit1.setForeground(new java.awt.Color(204, 0, 51));
+
+        lblPlayerHit2.setBackground(new java.awt.Color(255, 255, 255));
         lblPlayerHit2.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         lblPlayerHit2.setForeground(new java.awt.Color(255, 51, 51));
+
+        lblEnemyName.setText(enemy.getName());
+
+        lblPlayerName.setText(player.getName());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,26 +190,30 @@ public class frmBattelfield extends javax.swing.JFrame {
                         .addComponent(btnRunAway)
                         .addGap(66, 66, 66)
                         .addComponent(lblActionEvents, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnUseSkill)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cmbPlayerSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnAttack)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(prgbPlayerMana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(prgbPlayerHealth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(lblPlayerHit2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
-                                .addComponent(lblPlayerHit1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPlayerHit1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblPlayerHit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblPlayerHit, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(prgbPlayerMana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblPlayerName, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblEnemyName, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(prgbEnemyHealth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(prgbEnemyMana, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -153,29 +223,37 @@ public class frmBattelfield extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(prgbPlayerHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblPlayerHit2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20)
-                                .addComponent(prgbPlayerMana, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(prgbEnemyHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
                                 .addComponent(prgbEnemyMana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(lblPlayerHit1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPlayerHit1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPlayerHit))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblEnemyName, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbPlayerSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUseSkill))
+                        .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(lblPlayerHit)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 219, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnUseSkill))
-                .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(prgbPlayerHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPlayerHit2, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(prgbPlayerMana, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(lblPlayerName)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAttack)
                     .addComponent(btnRunAway)
@@ -193,13 +271,14 @@ public class frmBattelfield extends javax.swing.JFrame {
     private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
         enemy=battlefield.playerAttack();
         lblActionEvents.setText("Düşmana "+player.getDamage()+" vurdunuz");
+        lblPlayerHit1.setText("-"+Integer.toString((int)player.getDamage()));
         player= battlefield.enemyBattle();
         prgbPlayerHealth.setValue((int)player.getHealth());
         prgbEnemyHealth.setValue((int)enemy.getHealth());
     }//GEN-LAST:event_btnAttackActionPerformed
 
     private void btnRunAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunAwayActionPerformed
-        // TODO add your handling code here:
+        runAwayDialog();
     }//GEN-LAST:event_btnRunAwayActionPerformed
 
     
@@ -245,11 +324,13 @@ public class frmBattelfield extends javax.swing.JFrame {
     private javax.swing.JButton btnAttack;
     private javax.swing.JButton btnRunAway;
     private javax.swing.JButton btnUseSkill;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cmbPlayerSkills;
     private javax.swing.JLabel lblActionEvents;
+    private javax.swing.JLabel lblEnemyName;
     private javax.swing.JLabel lblPlayerHit;
     private javax.swing.JLabel lblPlayerHit1;
     private javax.swing.JLabel lblPlayerHit2;
+    private javax.swing.JLabel lblPlayerName;
     private javax.swing.JProgressBar prgbEnemyHealth;
     private javax.swing.JProgressBar prgbEnemyMana;
     private javax.swing.JProgressBar prgbPlayerHealth;
