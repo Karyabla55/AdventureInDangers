@@ -1,7 +1,7 @@
 
 public class Battlefield extends frmBattelfield{
-    private Character player;
-    private Character enemy;
+    
+    
     public Battlefield(Character Player,Character Enemy) {
         this.player = Player;
         this.enemy  = Enemy;
@@ -11,34 +11,18 @@ public class Battlefield extends frmBattelfield{
         enemy.setHealth(enemy.getHealth()-player.getDamage());
         return enemy;
     }
-    public Character playerSkill(){
-        enemy.setHealth(enemy.getHealth()-player.getDamage());
+    public Character playerSkill(int ComboBoxİndex){
+        enemy.setHealth(enemy.getHealth()-player.skills[ComboBoxİndex].damage);
+        if(player.skills[ComboBoxİndex].mana <= player.getMana()){
+            player.setMana(player.getMana()-player.skills[ComboBoxİndex].mana);
+        }
         return enemy;
     }
     public Character enemyBattle(){
-        
+        player.setHealth(player.getHealth()-enemy.getDamage());
         return player;
     }
 
-    
-    public Character getPlayer() {
-        return player;
-    }
-
-    
-    public void setPlayer(Character player) {
-        this.player = player;
-    }
-
-    
-    public Character getEnemy() {
-        return enemy;
-    }
-
-    
-    public void setEnemy(Character enemy) {
-        this.enemy = enemy;
-    }
     
     
 }

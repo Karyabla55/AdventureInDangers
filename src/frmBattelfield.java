@@ -15,8 +15,13 @@ public class frmBattelfield extends javax.swing.JFrame {
     static Character player;
     static Character enemy;
     static Battlefield battlefield;
+    
     private BufferedImage backgroundImage;
     DefaultComboBoxModel model = new DefaultComboBoxModel();
+    
+    double battlefieldPMH = player.getHealth();
+    int battlefieldPMM = player.getMana();
+    
     public frmBattelfield() {
         setBackground();
         initComponents();
@@ -24,12 +29,8 @@ public class frmBattelfield extends javax.swing.JFrame {
         cmbPlayerSkills.setModel(model);
         setLbls();
         setComboBox();
-        
     }
-    
-    
-    
-    
+
     private void setBackground(){
         try {
             switch (player.getJobName()) {
@@ -44,6 +45,12 @@ public class frmBattelfield extends javax.swing.JFrame {
                         backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
                     }
                     else if(enemy.getName().equals("kurt adam")){
+                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
+                    }
+                    else if(enemy.getName().equals("thanos")){
+                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
+                    }
+                    else if(enemy.getName().equals("cadı")){
                         backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
                     }
                     
@@ -78,7 +85,79 @@ public class frmBattelfield extends javax.swing.JFrame {
     private void setComboBox(){
         model.addElement(player.skills[0].name);
         model.addElement(player.skills[1].name);
+    }
+    
+    private void wonDialog(){
+        // Seçeneklerinizi bir dizi olarak tanımlayın
+        Object[] options = {"Zafer!"};
+        // Kullanıcının seçimini almak için bir dialog oluşturun
+        int selectedOptionIndex = JOptionPane.showOptionDialog(
+                null,                   // Parent component (null, ekranda ortalanır)
+                "Büyük bir savaşı kazanarak\n bir ödülü hakk ettin",   // Dialog içeriği
+                "Savaşı Kazandın",           // Dialog başlığı
+                JOptionPane.DEFAULT_OPTION, // Mesaj tipi
+                JOptionPane.INFORMATION_MESSAGE, // İkon tipi
+                null,                   // Seçenekleri içeren dizi
+                options,                // Seçeneklerinizi içeren dizi
+                options[0]);            // Varsayılan seçenek
 
+        // Kullanıcının seçtiği seçeneği yazdırın
+        if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
+            if(selectedOptionIndex == 0){
+                frmCamp.Run(player);
+            this.dispose();
+            }      
+        } else {
+            System.out.println("Hiçbir seçenek seçilmedi.");
+        }
+    }
+    private void drawDialog(){
+        // Seçeneklerinizi bir dizi olarak tanımlayın
+        Object[] options = {"Berabere Kaldın"};
+        // Kullanıcının seçimini almak için bir dialog oluşturun
+        int selectedOptionIndex = JOptionPane.showOptionDialog(
+                null,                   // Parent component (null, ekranda ortalanır)
+                "Canavarı zar zor öldürdükten sonra \nnerdeyse ölmek üzereydin \nbu yüzden canın pahasına zindandan kaçtın",   // Dialog içeriği
+                "Savaşı Berabere Bitirdin",           
+                JOptionPane.DEFAULT_OPTION, // Mesaj tipi
+                JOptionPane.PLAIN_MESSAGE, // İkon tipi
+                null,                   // Seçenekleri içeren dizi
+                options,                // Seçeneklerinizi içeren dizi
+                options[0]);            // Varsayılan seçenek
+
+        // Kullanıcının seçtiği seçeneği yazdırın
+        if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
+            if(selectedOptionIndex == 0){
+                frmCamp.Run(player);
+            this.dispose();
+            }      
+        } else {
+            System.out.println("Hiçbir seçenek seçilmedi.");
+        }
+    }
+    private void loseDialog(){
+        // Seçeneklerinizi bir dizi olarak tanımlayın
+        Object[] options = {"Kaybettin"};
+        // Kullanıcının seçimini almak için bir dialog oluşturun
+        int selectedOptionIndex = JOptionPane.showOptionDialog(
+                null,                   // Parent component (null, ekranda ortalanır)
+                "Senin Kendisinden zayıf olduğunu \nfark eden canavar seni daha fazla umursamadı \nbu sayede hala hayattasın",   // Dialog içeriği
+                "Savaşı kaybettin",    //Diyalog başlığı       
+                JOptionPane.DEFAULT_OPTION, // Mesaj tipi
+                JOptionPane.PLAIN_MESSAGE, // İkon tipi
+                null,                   // Seçenekleri içeren dizi
+                options,                // Seçeneklerinizi içeren dizi
+                options[0]);            // Varsayılan seçenek
+
+        // Kullanıcının seçtiği seçeneği yazdırın
+        if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
+            if(selectedOptionIndex == 0){
+                frmCamp.Run(player);
+            this.dispose();
+            }      
+        } else {
+            System.out.println("Hiçbir seçenek seçilmedi.");
+        }
     }
     private void runAwayDialog(){
         // Seçeneklerinizi bir dizi olarak tanımlayın
@@ -99,9 +178,6 @@ public class frmBattelfield extends javax.swing.JFrame {
             if(selectedOptionIndex == 0){
                 frmCamp.Run(player);
             this.dispose();
-            }
-            else{
-                
             }
             
         } else {
@@ -226,17 +302,18 @@ public class frmBattelfield extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(prgbEnemyHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(prgbEnemyMana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblPlayerHit1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblPlayerHit))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblEnemyName, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(prgbEnemyHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(prgbEnemyMana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblEnemyName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmbPlayerSkills, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,16 +342,79 @@ public class frmBattelfield extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUseSkillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUseSkillActionPerformed
-        // TODO add your handling code here:
+        enemy=battlefield.playerSkill(cmbPlayerSkills.getSelectedIndex());
+        lblActionEvents.setText("Düşmana "+player.skills[cmbPlayerSkills.getSelectedIndex()].damage+" vurdunuz");
+        lblPlayerHit1.setText("-"+Integer.toString((int)player.skills[cmbPlayerSkills.getSelectedIndex()].damage));
+        prgbEnemyHealth.setValue((int)enemy.getHealth());
+        if(enemy.getHealth() <=0){
+            player.setGold(player.getGold()+enemy.getGold());
+            player.setExperience(player.getExperience()+enemy.getExperience());
+            if(player.getExperience()>=player.getLevel()*100){
+                player.setLevel(player.getLevel()+1);
+                // 2 seviye birden atlama ihtimaline karşılık önlem
+                if(player.getExperience()>=player.getLevel()*100){
+                    player.setLevel(player.getLevel()+1);
+                }
+            }
+            wonDialog();
+            player.setHealth(battlefieldPMH);
+            frmCamp.Run(player);
+            this.dispose();
+        }
+        else{
+            player= battlefield.enemyBattle();
+            lblActionEvents.setText("Düşman sana "+enemy.getDamage()+" vurdu");
+            lblPlayerHit2.setText("-"+Integer.toString((int)player.getDamage()));
+            prgbPlayerHealth.setValue((int)player.getHealth());
+            if(player.getHealth()<=0){
+                loseDialog();
+                player.setExperience(player.getExperience()/2);
+                player.setHealth(battlefieldPMH);
+                frmCamp.Run(player);
+                this.dispose();
+            }
+        
+        }
     }//GEN-LAST:event_btnUseSkillActionPerformed
 
     private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
         enemy=battlefield.playerAttack();
         lblActionEvents.setText("Düşmana "+player.getDamage()+" vurdunuz");
         lblPlayerHit1.setText("-"+Integer.toString((int)player.getDamage()));
-        player= battlefield.enemyBattle();
-        prgbPlayerHealth.setValue((int)player.getHealth());
         prgbEnemyHealth.setValue((int)enemy.getHealth());
+        if(enemy.getHealth() <=0){
+            player.setGold(player.getGold()+enemy.getGold());
+            player.setExperience(player.getExperience()+enemy.getExperience());
+            if(player.getExperience()>=player.getLevel()*100){
+                player.setLevel(player.getLevel()+1);
+                // 2 seviye birden atlama ihtimaline karşılık önlem
+                if(player.getExperience()>=player.getLevel()*100){
+                    player.setLevel(player.getLevel()+1);
+                }
+            }
+            wonDialog();
+            player.setHealth(battlefieldPMH);
+            frmCamp.Run(player);
+            this.dispose();
+        }
+        else{
+            player= battlefield.enemyBattle();
+            lblActionEvents.setText("Düşman sana "+enemy.getDamage()+" vurdu");
+            lblPlayerHit2.setText("-"+Integer.toString((int)player.getDamage()));
+            prgbPlayerHealth.setValue((int)player.getHealth());
+            if(player.getHealth()<=0){
+                loseDialog();
+                player.setExperience(player.getExperience()/2);
+                player.setHealth(battlefieldPMH);
+                frmCamp.Run(player);
+                this.dispose();
+            }
+        
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_btnAttackActionPerformed
 
     private void btnRunAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunAwayActionPerformed
