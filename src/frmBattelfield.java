@@ -4,14 +4,24 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
 public class frmBattelfield extends javax.swing.JFrame {
+    static Random rand = new Random();
+    static private Clip clip;
+    static private AudioInputStream sound;
+    
     static Character player;
     static Character enemy;
     static Battlefield battlefield;
@@ -24,11 +34,49 @@ public class frmBattelfield extends javax.swing.JFrame {
     
     public frmBattelfield() {
         setBackground();
+        
         initComponents();
         setLocationRelativeTo(null);
         cmbPlayerSkills.setModel(model);
         setLbls();
         setComboBox();
+        
+    }
+    private static void setBackgroundMusic() {
+        String pathName;
+            
+            int random = rand.nextInt(3);
+            switch(random){
+                case 0:
+                    pathName = "./src/Sounds/ThemeSongBattlefield.wav";
+                    
+                    break;
+                case 1:
+                    pathName = "./src/Sounds/TSBattlefield1.wav";
+                    
+                    break;
+                case 2:
+                    pathName = "./src/Sounds/TSBattlefield2.wav";
+                   
+                    break;
+                default:
+                    pathName = "./src/Sounds/ThemeSongBattlefield.wav";
+                    break;
+                
+            }
+            System.out.println(random);
+            System.out.println(pathName);
+        try {
+            File file = new File(pathName);
+            sound = AudioSystem.getAudioInputStream(file);
+            clip = AudioSystem.getClip();
+            clip.open(sound);
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Error playing sound: " + e.getMessage());
+        }
+        clip.start();
     }
 
     private void setBackground(){
@@ -111,29 +159,13 @@ public class frmBattelfield extends javax.swing.JFrame {
             System.out.println("Hiçbir seçenek seçilmedi.");
         }
     }
-    private void drawDialog(){
-        // Seçeneklerinizi bir dizi olarak tanımlayın
-        Object[] options = {"Berabere Kaldın"};
-        // Kullanıcının seçimini almak için bir dialog oluşturun
-        int selectedOptionIndex = JOptionPane.showOptionDialog(
-                null,                   // Parent component (null, ekranda ortalanır)
-                "Canavarı zar zor öldürdükten sonra \nnerdeyse ölmek üzereydin \nbu yüzden canın pahasına zindandan kaçtın",   // Dialog içeriği
-                "Savaşı Berabere Bitirdin",           
-                JOptionPane.DEFAULT_OPTION, // Mesaj tipi
-                JOptionPane.PLAIN_MESSAGE, // İkon tipi
-                null,                   // Seçenekleri içeren dizi
-                options,                // Seçeneklerinizi içeren dizi
-                options[0]);            // Varsayılan seçenek
-
-        // Kullanıcının seçtiği seçeneği yazdırın
-        if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
-            if(selectedOptionIndex == 0){
-                frmCamp.Run(player);
-            this.dispose();
-            }      
-        } else {
-            System.out.println("Hiçbir seçenek seçilmedi.");
-        }
+    
+    
+    public void notEnoughManaDialog(){
+        String message = "Bu yeteneği kullanmak için \nyeterli manan yok";
+        JOptionPane.showMessageDialog(new JFrame(), message, "Yetersiz Mana",
+        JOptionPane.ERROR_MESSAGE);
+        
     }
     private void loseDialog(){
         // Seçeneklerinizi bir dizi olarak tanımlayın
@@ -153,6 +185,13 @@ public class frmBattelfield extends javax.swing.JFrame {
         if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
             if(selectedOptionIndex == 0){
                 frmCamp.Run(player);
+                try {
+            sound.close();
+        } catch (IOException ex) {
+            Logger.getLogger(frmStart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        clip.close();
+        clip.stop();
             this.dispose();
             }      
         } else {
@@ -177,6 +216,13 @@ public class frmBattelfield extends javax.swing.JFrame {
         if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
             if(selectedOptionIndex == 0){
                 frmCamp.Run(player);
+                try {
+            sound.close();
+        } catch (IOException ex) {
+            Logger.getLogger(frmStart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        clip.close();
+        clip.stop();
             this.dispose();
             }
             
@@ -231,17 +277,21 @@ public class frmBattelfield extends javax.swing.JFrame {
             }
         });
 
+        prgbPlayerHealth.setBackground(new java.awt.Color(204, 0, 51));
         prgbPlayerHealth.setForeground(new java.awt.Color(153, 0, 51));
         prgbPlayerHealth.setMaximum((int)player.getHealth());
 
+        prgbPlayerMana.setBackground(new java.awt.Color(0, 0, 204));
         prgbPlayerMana.setForeground(new java.awt.Color(0, 51, 255));
         prgbPlayerMana.setMaximum((int)player.getMana()
         );
 
-        prgbEnemyHealth.setForeground(new java.awt.Color(153, 0, 0));
+        prgbEnemyHealth.setBackground(new java.awt.Color(204, 0, 51));
+        prgbEnemyHealth.setForeground(new java.awt.Color(204, 0, 0));
         prgbEnemyHealth.setMaximum((int)enemy.getHealth());
 
-        prgbEnemyMana.setForeground(new java.awt.Color(204, 0, 51));
+        prgbEnemyMana.setBackground(new java.awt.Color(51, 51, 255));
+        prgbEnemyMana.setForeground(new java.awt.Color(0, 0, 204));
         prgbEnemyMana.setMaximum(enemy.getMana());
 
         lblPlayerHit1.setBackground(new java.awt.Color(255, 255, 255));
@@ -251,8 +301,11 @@ public class frmBattelfield extends javax.swing.JFrame {
         lblPlayerHit2.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         lblPlayerHit2.setForeground(new java.awt.Color(255, 51, 51));
 
+        lblEnemyName.setBackground(new java.awt.Color(0, 0, 0));
+        lblEnemyName.setForeground(new java.awt.Color(255, 255, 255));
         lblEnemyName.setText(enemy.getName());
 
+        lblPlayerName.setBackground(new java.awt.Color(255, 255, 255));
         lblPlayerName.setText(player.getName());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -345,6 +398,7 @@ public class frmBattelfield extends javax.swing.JFrame {
         enemy=battlefield.playerSkill(cmbPlayerSkills.getSelectedIndex());
         lblActionEvents.setText("Düşmana "+player.skills[cmbPlayerSkills.getSelectedIndex()].damage+" vurdunuz");
         lblPlayerHit1.setText("-"+Integer.toString((int)player.skills[cmbPlayerSkills.getSelectedIndex()].damage));
+        prgbPlayerMana.setValue((int)player.getMana());
         prgbEnemyHealth.setValue((int)enemy.getHealth());
         if(enemy.getHealth() <=0){
             player.setGold(player.getGold()+enemy.getGold());
@@ -358,6 +412,7 @@ public class frmBattelfield extends javax.swing.JFrame {
             }
             wonDialog();
             player.setHealth(battlefieldPMH);
+            player.setMana(battlefieldPMM);
             frmCamp.Run(player);
             this.dispose();
         }
@@ -370,6 +425,7 @@ public class frmBattelfield extends javax.swing.JFrame {
                 loseDialog();
                 player.setExperience(player.getExperience()/2);
                 player.setHealth(battlefieldPMH);
+                player.setMana(battlefieldPMM);
                 frmCamp.Run(player);
                 this.dispose();
             }
@@ -394,6 +450,7 @@ public class frmBattelfield extends javax.swing.JFrame {
             }
             wonDialog();
             player.setHealth(battlefieldPMH);
+            player.setMana(battlefieldPMM);
             frmCamp.Run(player);
             this.dispose();
         }
@@ -406,6 +463,7 @@ public class frmBattelfield extends javax.swing.JFrame {
                 loseDialog();
                 player.setExperience(player.getExperience()/2);
                 player.setHealth(battlefieldPMH);
+                player.setMana(battlefieldPMM);
                 frmCamp.Run(player);
                 this.dispose();
             }
@@ -453,7 +511,7 @@ public class frmBattelfield extends javax.swing.JFrame {
             public void run() {
                 System.out.println("work");
                 battlefield = new Battlefield(player, enemy);
-                
+                setBackgroundMusic();
                 new frmBattelfield().setVisible(true);
                 System.out.println("Work-2");
             }

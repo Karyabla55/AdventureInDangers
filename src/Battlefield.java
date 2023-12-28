@@ -16,6 +16,10 @@ public class Battlefield extends frmBattelfield{
         if(player.skills[ComboBoxİndex].mana <= player.getMana()){
             enemy.setHealth(enemy.getHealth()-player.skills[ComboBoxİndex].damage);
             player.setMana(player.getMana()-player.skills[ComboBoxİndex].mana);
+        }else{
+            notEnoughManaDialog();
+            enemy.setHealth(enemy.getHealth()-player.getDamage());
+            
         }
         return enemy;
     }
