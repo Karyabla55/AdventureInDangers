@@ -56,7 +56,7 @@ public class frmSkillStore extends javax.swing.JFrame {
             skills.add(new MartialArtistSkills(player.getItem(),2));
             skills.add(new MartialArtistSkills(player.getItem(),3));
             break;
-        case "MageSkills":
+        case "Mage":
             skills.add(new MageSkills(player.getItem(),0));
             skills.add(new MageSkills(player.getItem(),1));
             skills.add(new MageSkills(player.getItem(),2));

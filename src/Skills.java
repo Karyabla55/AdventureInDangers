@@ -2,6 +2,7 @@
 public abstract class Skills {
     String name;
     int price;
+    int mana;
     double damage ;
     String type;
     
