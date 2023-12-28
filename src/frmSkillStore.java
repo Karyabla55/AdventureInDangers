@@ -61,10 +61,8 @@ public class frmSkillStore extends javax.swing.JFrame {
             skills.add(new MageSkills(player.getItem(),1));
             skills.add(new MageSkills(player.getItem(),2));
             skills.add(new MageSkills(player.getItem(),3));
-            break;
-            
-        
-    }
+            break;   
+        }
        
         
         for(Skills sSkills : skills){

@@ -3,15 +3,24 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.JPanel;
 
 
 public class frmCamp extends javax.swing.JFrame {
+    
+    private Clip clip;
+    private AudioInputStream sound;
     public static Character player;
     private BufferedImage backgroundImage;
     public frmCamp() {
         setBackground();
+        setBackgroundMusic();
         initComponents();
         setLocationRelativeTo(null);
         lblPrint(player);
@@ -40,6 +49,18 @@ public class frmCamp extends javax.swing.JFrame {
         lblPlayerARM.setText("Armor:"+player.getArmor());
         
     }
+    private void setBackgroundMusic() {
+        try {
+            File file = new File("./src/Sounds/ThemeSongCamp.wav");
+            sound = AudioSystem.getAudioInputStream(file);
+            clip = AudioSystem.getClip();
+            clip.open(sound);
+        } catch (Exception e) {
+            System.out.println("Dosya bulunamadı");
+        }
+        clip.start();
+    }
+    
     private void setBackground(){
         try {
             switch (player.getJobName()) {
@@ -207,11 +228,27 @@ public class frmCamp extends javax.swing.JFrame {
 
     private void btnStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStoreActionPerformed
         frmStore.Run(player);
+        
+        try {
+            sound.close();
+        } catch (IOException ex) {
+            Logger.getLogger(frmStart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        clip.close();
+        clip.stop();
         this.dispose();
     }//GEN-LAST:event_btnStoreActionPerformed
 
     private void btnDungeonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDungeonActionPerformed
         frmDungeon.Run(player);
+        
+        try {
+            sound.close();
+        } catch (IOException ex) {
+            Logger.getLogger(frmStart.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        clip.close();
+        clip.stop();
         this.dispose();
     }//GEN-LAST:event_btnDungeonActionPerformed
 
@@ -246,6 +283,7 @@ public class frmCamp extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmCamp().setVisible(true);
+                
             }
         });
     }

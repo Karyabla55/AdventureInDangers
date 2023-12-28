@@ -184,7 +184,7 @@ public class frmBattelfield extends javax.swing.JFrame {
         // Kullanıcının seçtiği seçeneği yazdırın
         if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
             if(selectedOptionIndex == 0){
-                frmCamp.Run(player);
+                
                 try {
             sound.close();
         } catch (IOException ex) {
@@ -427,6 +427,7 @@ public class frmBattelfield extends javax.swing.JFrame {
                 player.setHealth(battlefieldPMH);
                 player.setMana(battlefieldPMM);
                 frmCamp.Run(player);
+                System.out.println("work-3");
                 this.dispose();
             }
         
@@ -468,11 +469,7 @@ public class frmBattelfield extends javax.swing.JFrame {
                 this.dispose();
             }
         
-        }
-        
-        
-        
-        
+        }    
     }//GEN-LAST:event_btnAttackActionPerformed
 
     private void btnRunAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunAwayActionPerformed
