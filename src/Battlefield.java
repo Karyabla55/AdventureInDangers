@@ -12,8 +12,9 @@ public class Battlefield extends frmBattelfield{
         return enemy;
     }
     public Character playerSkill(int ComboBoxİndex){
-        enemy.setHealth(enemy.getHealth()-player.skills[ComboBoxİndex].damage);
+        
         if(player.skills[ComboBoxİndex].mana <= player.getMana()){
+            enemy.setHealth(enemy.getHealth()-player.skills[ComboBoxİndex].damage);
             player.setMana(player.getMana()-player.skills[ComboBoxİndex].mana);
         }
         return enemy;
