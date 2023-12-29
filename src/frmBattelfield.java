@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 public class frmBattelfield extends javax.swing.JFrame {
     static Character player;
+    static Character enemy;
     private BufferedImage backgroundImage;
     public frmBattelfield() {
         initComponents();
@@ -74,24 +75,29 @@ public class frmBattelfield extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
 
         btnUseSkill.setText("Use Skill");
-
-        btnAttack.setText("Attack");
-
-        btnRunAway.setText("Run away");
-
-        prgbPlayerHealth.setForeground(new java.awt.Color(153, 0, 51));
-        prgbPlayerHealth.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                prgbPlayerHealthStateChanged(evt);
+        btnUseSkill.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUseSkillActionPerformed(evt);
             }
         });
+
+        btnAttack.setText("Attack");
+        btnAttack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAttackActionPerformed(evt);
+            }
+        });
+
+        btnRunAway.setText("Run away");
+        btnRunAway.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRunAwayActionPerformed(evt);
+            }
+        });
+
+        prgbPlayerHealth.setForeground(new java.awt.Color(153, 0, 51));
 
         prgbPlayerMana.setForeground(new java.awt.Color(0, 51, 255));
 
@@ -143,7 +149,7 @@ public class frmBattelfield extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(prgbPlayerHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,7 +159,7 @@ public class frmBattelfield extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(prgbEnemyHealth, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addComponent(prgbEnemyMana, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(prgbEnemyMana, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(lblPlayerHit1, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(23, 23, 23)
@@ -172,17 +178,22 @@ public class frmBattelfield extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void btnUseSkillActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUseSkillActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_btnUseSkillActionPerformed
 
-    private void prgbPlayerHealthStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_prgbPlayerHealthStateChanged
+    private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_prgbPlayerHealthStateChanged
+    }//GEN-LAST:event_btnAttackActionPerformed
+
+    private void btnRunAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRunAwayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRunAwayActionPerformed
 
     
-    public static void Run(Character character) {
-        player = character;
+    public static void Run(Character Player,Character Enemy) {
+        player = Player;
+        enemy = Enemy;
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

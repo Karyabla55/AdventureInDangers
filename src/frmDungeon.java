@@ -4,12 +4,15 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 
 public class frmDungeon extends javax.swing.JFrame {
+    Random rand = new Random();
     public static Character player;
+    public static Character enemy;
     private BufferedImage backgroundImage;
     
     public frmDungeon() {
@@ -77,10 +80,25 @@ public class frmDungeon extends javax.swing.JFrame {
         });
 
         btnFloor2.setText("2.Kat");
+        btnFloor2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFloor2ActionPerformed(evt);
+            }
+        });
 
         btnFloor3.setText("3.Kat");
+        btnFloor3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFloor3ActionPerformed(evt);
+            }
+        });
 
         btnFloor4.setText("4.Kat");
+        btnFloor4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFloor4ActionPerformed(evt);
+            }
+        });
 
         btnFloor5.setText("5.Kat");
         btnFloor5.addActionListener(new java.awt.event.ActionListener() {
@@ -133,12 +151,15 @@ public class frmDungeon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFloor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor1ActionPerformed
-        frmBattelfield.Run(player);
+        enemy = new Enemy(rand.nextInt(0, 2));
+        frmBattelfield.Run(player,enemy);
         this.dispose();
     }//GEN-LAST:event_btnFloor1ActionPerformed
 
     private void btnFloor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor5ActionPerformed
-        // TODO add your handling code here:
+        enemy = new Enemy(rand.nextInt(8, 10));
+        frmBattelfield.Run(player,enemy);
+        this.dispose();
     }//GEN-LAST:event_btnFloor5ActionPerformed
 
     private void btnCampActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCampActionPerformed
@@ -146,6 +167,24 @@ public class frmDungeon extends javax.swing.JFrame {
         frmCamp.Run(player);
         this.dispose();
     }//GEN-LAST:event_btnCampActionPerformed
+
+    private void btnFloor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor2ActionPerformed
+        enemy = new Enemy(rand.nextInt(2, 4));
+        frmBattelfield.Run(player,enemy);
+        this.dispose();
+    }//GEN-LAST:event_btnFloor2ActionPerformed
+
+    private void btnFloor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor3ActionPerformed
+        enemy = new Enemy(rand.nextInt(4, 6));
+        frmBattelfield.Run(player,enemy);
+        this.dispose();
+    }//GEN-LAST:event_btnFloor3ActionPerformed
+
+    private void btnFloor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor4ActionPerformed
+        enemy = new Enemy(rand.nextInt(6, 8));
+        frmBattelfield.Run(player,enemy);
+        this.dispose();
+    }//GEN-LAST:event_btnFloor4ActionPerformed
 
    
     

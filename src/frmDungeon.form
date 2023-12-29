@@ -70,16 +70,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="2.Kat"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloor2ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFloor3">
       <Properties>
         <Property name="text" type="java.lang.String" value="3.Kat"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloor3ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFloor4">
       <Properties>
         <Property name="text" type="java.lang.String" value="4.Kat"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFloor4ActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnFloor5">
       <Properties>
