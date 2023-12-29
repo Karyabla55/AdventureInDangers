@@ -49,7 +49,7 @@ public class Enemy extends Character{
         enemyExp.add(20);
         enemyExp.add(30);
         enemyExp.add(40);
-        enemyExp.add(10);
+        enemyExp.add(15);
         
         
         
