@@ -24,7 +24,15 @@ public class Battlefield extends frmBattelfield{
         return enemy;
     }
     public Character enemyBattle(){
-        player.setHealth(player.getHealth()-enemy.getDamage());
+        
+        if (enemy.getSkill().mana <= enemy.getMana()){
+            player.setHealth(player.getHealth()-enemy.getSkill().damage);
+            enemy.setMana(enemy.getMana()-enemy.getSkill().mana);
+        }
+        else{
+            player.setHealth(player.getHealth()-enemy.getDamage());
+        }
+        
         return player;
     }
 

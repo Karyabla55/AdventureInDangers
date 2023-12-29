@@ -83,10 +83,10 @@ public class frmBattelfield extends javax.swing.JFrame {
         try {
             switch (player.getJobName()) {
                 case "Archer":
-                    backgroundImage = ImageIO.read(new File("./src/Images/DungeonArcher.jpg"));
+                    backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldArcher.jpg"));
                     break;
                 case "Swordsman":
-                    backgroundImage = ImageIO.read(new File("./src/Images/DungeonSwordsman.jpg"));
+                    backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldSwordsman.jpg"));
                     break; 
                 case "Mage":
                     if(enemy.getName().equals("vampir")){
@@ -104,7 +104,7 @@ public class frmBattelfield extends javax.swing.JFrame {
                     
                     break;
                 case "Martial Artist":
-                    backgroundImage = ImageIO.read(new File("./src/Images/DungeonMartialArtist.jpg"));
+                    backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMartialArtist.jpg"));
                     break;
                 default:
                     throw new AssertionError();
@@ -151,9 +151,8 @@ public class frmBattelfield extends javax.swing.JFrame {
 
         // Kullanıcının seçtiği seçeneği yazdırın
         if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
-            if(selectedOptionIndex == 0){
-                frmCamp.Run(player);
-            this.dispose();
+            if(selectedOptionIndex == 0){ 
+                
             }      
         } else {
             System.out.println("Hiçbir seçenek seçilmedi.");

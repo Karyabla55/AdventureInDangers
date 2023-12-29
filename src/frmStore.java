@@ -273,11 +273,32 @@ public class frmStore extends javax.swing.JFrame {
                     if(weapons.get(index).price <= player.getGold()){
                     player.setGold(player.getGold()-weapons.get(index).price);
                     player.setItem(weapons.get(index));
+                    player.setDamage(weapons.get(index).damage);
+                    //      ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+                    //      ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+                    //      ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+                    // kullanıcının iş ismi kontrol edilecek ve yeni aldığı silahın hasarı yeteneğe işlenecek burdan
+                        if (player.getJobName().equals("Mage")){
+                            for(Skills pSkill: player.skills){
+                                for(int i=0;i<player.skills.length;i++){
+                                    if(pSkill.name.equals(MageSkills.Name[i])){
+                                    player.skills[i] = new MageSkills(weapons.get(index), i);
+                                    
+                                    }
+                                }
+                            
+                            }
+                        }
+                    // buraya kadar örnek kod bulunmakta,
+                    // ayrıca MageSkills gibi sınıf yeteneği classlarında Name dizisini Static yapın yoksa olmuyo 
+                    //      ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+                    //      ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+                    //      ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
                     player.setWeapon(true);
                     setLbls();
                     }
                     else{
-                        lblerrorMassage.setText("Bu silahı alamazsınız. Çünkü elinizde silah varparan yok");
+                        lblerrorMassage.setText("paran yok");
                     }
 
             }

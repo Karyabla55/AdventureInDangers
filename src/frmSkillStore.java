@@ -287,7 +287,7 @@ public class frmSkillStore extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCampActionPerformed
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
-        // TODO add your handling code here:
+        // Yetenek satın alımı hazırlancak
     }//GEN-LAST:event_btnBuyActionPerformed
 
     private void btnWeaponStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWeaponStoreActionPerformed
@@ -296,7 +296,7 @@ public class frmSkillStore extends javax.swing.JFrame {
     }//GEN-LAST:event_btnWeaponStoreActionPerformed
 
     private void btnSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellActionPerformed
-        // TODO add your handling code here:
+        // Yetenek satma hazırlanacak
     }//GEN-LAST:event_btnSellActionPerformed
 
     private void btnShowSkillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSkillsActionPerformed
