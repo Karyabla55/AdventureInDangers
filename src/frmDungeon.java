@@ -151,13 +151,13 @@ public class frmDungeon extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFloor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor1ActionPerformed
-        enemy = new Enemy(rand.nextInt(0, 2));
+        enemy = new Enemy(rand.nextInt(0, 4));
         frmBattelfield.Run(player,enemy);
         this.dispose();
     }//GEN-LAST:event_btnFloor1ActionPerformed
 
     private void btnFloor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor5ActionPerformed
-        enemy = new Enemy(rand.nextInt(8, 10));
+        enemy = new Enemy(17);
         frmBattelfield.Run(player,enemy);
         this.dispose();
     }//GEN-LAST:event_btnFloor5ActionPerformed
@@ -169,19 +169,19 @@ public class frmDungeon extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCampActionPerformed
 
     private void btnFloor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor2ActionPerformed
-        enemy = new Enemy(rand.nextInt(2, 4));
+        enemy = new Enemy(rand.nextInt(4, 8));
         frmBattelfield.Run(player,enemy);
         this.dispose();
     }//GEN-LAST:event_btnFloor2ActionPerformed
 
     private void btnFloor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor3ActionPerformed
-        enemy = new Enemy(rand.nextInt(4, 6));
+        enemy = new Enemy(rand.nextInt(8, 12));
         frmBattelfield.Run(player,enemy);
         this.dispose();
     }//GEN-LAST:event_btnFloor3ActionPerformed
 
     private void btnFloor4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor4ActionPerformed
-        enemy = new Enemy(rand.nextInt(6, 8));
+        enemy = new Enemy(rand.nextInt(12, 16));
         frmBattelfield.Run(player,enemy);
         this.dispose();
     }//GEN-LAST:event_btnFloor4ActionPerformed

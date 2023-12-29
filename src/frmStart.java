@@ -43,7 +43,7 @@ public class frmStart extends javax.swing.JFrame {
         contentPanel.setLayout(null);
         setContentPane(contentPanel);
     }
-    public void setBackgroundMusic() {
+    private void setBackgroundMusic() {
         try {
             File file = new File("./src/Sounds/ThemeSong.wav");
             sound = AudioSystem.getAudioInputStream(file);
