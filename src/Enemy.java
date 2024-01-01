@@ -4,19 +4,30 @@ import java.util.ArrayList;
 
 public class Enemy extends Character{
    // ArrayList<Items> weapons = new ArrayList<>(); 
-    ArrayList<String> enemyName = new ArrayList<>();
+    ArrayList<String> enemyName = new ArrayList<String>();
     ArrayList<Double> enemyHealth = new ArrayList<>();
     ArrayList<Double> enemyDamage = new ArrayList<>();
     ArrayList<Integer> enemyGold = new ArrayList<>();
     ArrayList<Integer> enemyMana = new ArrayList<>();
     ArrayList<Integer> enemyExp = new ArrayList<>();
     
-        Skills enemySkills[] = {new EnemySkills(enemyDamage.get(0),0),new EnemySkills(enemyDamage.get(1), 1),
-        new EnemySkills(enemyDamage.get(0),2),new EnemySkills(enemyDamage.get(3), 3)};
+    
     
     public Enemy(int level){
         setEnemies();
+        Skills enemySkills[] = {
+            new EnemySkills(enemyDamage.get(0),0),
+            new EnemySkills(enemyDamage.get(1), 1),
+            new EnemySkills(enemyDamage.get(0),2),
+            new EnemySkills(enemyDamage.get(3), 3)
+        };
         
+        this.setName(enemyName.get(level));  
+        this.setHealth(enemyHealth.get(level));
+        this.setDamage(enemyDamage.get(level));
+        this.setMana(enemyMana.get(level));
+        this.setGold(enemyGold.get(level));
+        this.setExperience(enemyExp.get(level));
         this.setSkill(enemySkills[level]);
     }
     

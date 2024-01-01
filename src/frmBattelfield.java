@@ -32,6 +32,7 @@ public class frmBattelfield extends javax.swing.JFrame {
     double battlefieldPMH = player.getHealth();
     int battlefieldPMM = player.getMana();
     
+    
     public frmBattelfield() {
         setBackground();
         
@@ -89,19 +90,7 @@ public class frmBattelfield extends javax.swing.JFrame {
                     backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldSwordsman.jpg"));
                     break; 
                 case "Mage":
-                    if(enemy.getName().equals("vampir")){
-                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
-                    }
-                    else if(enemy.getName().equals("kurt adam")){
-                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
-                    }
-                    else if(enemy.getName().equals("thanos")){
-                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
-                    }
-                    else if(enemy.getName().equals("cadı")){
-                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
-                    }
-                    
+                    backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMage.jpg"));
                     break;
                 case "Martial Artist":
                     backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMartialArtist.jpg"));
@@ -152,7 +141,13 @@ public class frmBattelfield extends javax.swing.JFrame {
         // Kullanıcının seçtiği seçeneği yazdırın
         if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
             if(selectedOptionIndex == 0){ 
-                
+                try {
+                sound.close();
+                } catch (IOException ex) {
+                Logger.getLogger(frmStart.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                clip.close();
+                clip.stop();
             }      
         } else {
             System.out.println("Hiçbir seçenek seçilmedi.");
@@ -300,8 +295,8 @@ public class frmBattelfield extends javax.swing.JFrame {
         lblPlayerHit2.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         lblPlayerHit2.setForeground(new java.awt.Color(255, 51, 51));
 
-        lblEnemyName.setBackground(new java.awt.Color(0, 0, 0));
-        lblEnemyName.setForeground(new java.awt.Color(255, 255, 255));
+        lblEnemyName.setBackground(new java.awt.Color(255, 255, 255));
+        lblEnemyName.setForeground(new java.awt.Color(0, 0, 0));
         lblEnemyName.setText(enemy.getName());
 
         lblPlayerName.setBackground(new java.awt.Color(255, 255, 255));
@@ -403,9 +398,14 @@ public class frmBattelfield extends javax.swing.JFrame {
             player.setGold(player.getGold()+enemy.getGold());
             player.setExperience(player.getExperience()+enemy.getExperience());
             if(player.getExperience()>=player.getLevel()*100){
+                battlefieldPMH += 5;
+                battlefieldPMM += 5;
                 player.setLevel(player.getLevel()+1);
+                
                 // 2 seviye birden atlama ihtimaline karşılık önlem
                 if(player.getExperience()>=player.getLevel()*100){
+                    battlefieldPMH += 5;
+                    battlefieldPMM += 5;
                     player.setLevel(player.getLevel()+1);
                 }
             }
@@ -442,10 +442,14 @@ public class frmBattelfield extends javax.swing.JFrame {
             player.setGold(player.getGold()+enemy.getGold());
             player.setExperience(player.getExperience()+enemy.getExperience());
             if(player.getExperience()>=player.getLevel()*100){
+                battlefieldPMH += 5;
+                battlefieldPMM += 5;
                 player.setLevel(player.getLevel()+1);
                 // 2 seviye birden atlama ihtimaline karşılık önlem
                 if(player.getExperience()>=player.getLevel()*100){
                     player.setLevel(player.getLevel()+1);
+                    battlefieldPMH += 5;
+                    battlefieldPMM += 5;
                 }
             }
             wonDialog();
