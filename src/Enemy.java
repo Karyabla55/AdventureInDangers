@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Enemy extends Character{
    // ArrayList<Items> weapons = new ArrayList<>(); 
-    ArrayList<String> enemyName = new ArrayList<String>();
+    ArrayList<String> enemyName = new ArrayList<>();
     ArrayList<Double> enemyHealth = new ArrayList<>();
     ArrayList<Double> enemyDamage = new ArrayList<>();
     ArrayList<Integer> enemyGold = new ArrayList<>();
