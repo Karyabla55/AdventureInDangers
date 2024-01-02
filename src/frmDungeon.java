@@ -157,7 +157,7 @@ public class frmDungeon extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFloor1ActionPerformed
 
     private void btnFloor5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFloor5ActionPerformed
-        enemy = new Enemy(17);
+        enemy = new Enemy(16);
         frmBattelfield.Run(player,enemy);
         this.dispose();
     }//GEN-LAST:event_btnFloor5ActionPerformed

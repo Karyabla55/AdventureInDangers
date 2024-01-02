@@ -10,6 +10,5 @@ public class Archer extends Jobs{
         this.damage = Item.damage;
         this.item = Item;
         this.skills = skill;  
-    }   
-    
+    }
 }
