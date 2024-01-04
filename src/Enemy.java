@@ -17,9 +17,9 @@ public class Enemy extends Character{
         setEnemies();
         Skills enemySkills[] = {
             new EnemySkills(enemyDamage.get(0),0),
-            new EnemySkills(enemyDamage.get(1), 1),
+            new EnemySkills(enemyDamage.get(1),1),
             new EnemySkills(enemyDamage.get(0),2),
-            new EnemySkills(enemyDamage.get(3), 3)
+            new EnemySkills(enemyDamage.get(3),3)
         };
         
         this.setName(enemyName.get(level));  
