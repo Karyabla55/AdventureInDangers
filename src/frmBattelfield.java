@@ -90,19 +90,7 @@ public class frmBattelfield extends javax.swing.JFrame {
                     backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldSwordsman.jpg"));
                     break; 
                 case "Mage":
-                    if(enemy.getName().equals("vampir")){
-                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
-                    }
-                    else if(enemy.getName().equals("kurt adam")){
-                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
-                    }
-                    else if(enemy.getName().equals("thanos")){
-                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
-                    }
-                    else if(enemy.getName().equals("cadı")){
-                        backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMageVampire.jpg"));
-                    }
-                    
+                    backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMage.jpg"));
                     break;
                 case "Martial Artist":
                     backgroundImage = ImageIO.read(new File("./src/Images/BattlefieldMartialArtist.jpg"));

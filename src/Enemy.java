@@ -9,15 +9,11 @@ public class Enemy extends Character{
     ArrayList<Integer> enemyGold = new ArrayList();
     ArrayList<Integer> enemyMana = new ArrayList();
     ArrayList<Integer> enemyExp = new ArrayList();
-    Skills[] enemySkills = new Skills[]{new EnemySkills(enemyDamage.get(0), 0), 
-                                        new EnemySkills(enemyDamage.get(1), 1), 
-                                        new EnemySkills(enemyDamage.get(0), 2), 
-                                        new EnemySkills(enemyDamage.get(3), 3)};
+    Skills[] enemySkills;
     public Enemy(int level) {
         setEnemies();
-        
-        setName((String)
-        enemyName.get(level));
+        setEnemySkills();
+        setName((enemyName.get(level)));
         setHealth(enemyHealth.get(level));
         setDamage(enemyDamage.get(level));
         setMana(enemyMana.get(level));
@@ -57,8 +53,13 @@ public class Enemy extends Character{
         enemyExp.add(40);
         enemyExp.add(15);
         
-        
-        
+    }
+    
+    private void setEnemySkills(){
+        enemySkills = new Skills[]{ new EnemySkills(enemyDamage.get(0), 0), 
+                                    new EnemySkills(enemyDamage.get(1), 1), 
+                                    new EnemySkills(enemyDamage.get(0), 2), 
+                                    new EnemySkills(enemyDamage.get(3), 3)};
     }
     
     

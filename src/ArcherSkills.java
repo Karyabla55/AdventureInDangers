@@ -1,6 +1,6 @@
 
 public class ArcherSkills extends Skills{
-    String[] Name = {"Odaklı Vuruş","Seri Oklar","Ok Yağmuru","Patlayıcı Ok"};
+    public static String[] Name = {"Odaklı Vuruş","Seri Oklar","Ok Yağmuru","Patlayıcı Ok"};
     int[] Price = {20,60,70,80};
     Double[] Damage = {2.5,5.5,10.0,15.0};
 

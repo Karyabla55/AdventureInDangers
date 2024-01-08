@@ -1,6 +1,6 @@
 
 public class SwordmanSkills extends Skills{
-    String[] Name = {"Ağır Darbe","Çifte Darbe","Çivili Darbe","Dönen Darbe"};
+    public static String[] Name = {"Ağır Darbe","Çifte Darbe","Çivili Darbe","Dönen Darbe"};
     int[] Price = {20,60,70,80};
     Double[] Damage = {3.0,1.5,50.0,90.0};
 
