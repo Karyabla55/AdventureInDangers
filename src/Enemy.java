@@ -1,22 +1,24 @@
 
+import java.util.ArrayList;
+
+
 public class Enemy extends Character{
-    String enemyName[] = {"vampir","kurt adam","thanos","cadı"};
-    double enemyHealth[] = {100.0,150.0,200.0,75.0};
-    double enemyDamage[] = {40.0,35.0,70.0,45.0};
-    int enemyGold[] = {10,20,30,40};
-    int enemyMana[] = {10,20,30,40};
-    int enemyExp[] = {20,30,40,10};
-    Skills enemySkills[] = {new EnemySkills(enemyDamage[0],0),new EnemySkills(enemyDamage[1], 1),
-        new EnemySkills(enemyDamage[2],2),new EnemySkills(enemyDamage[3], 3)};
-    
-    public Enemy(int level){
-        
-        this.setName(enemyName[level]);
-        this.setHealth(enemyHealth[level]);
-        this.setDamage(enemyDamage[level]);
-        this.setGold(enemyGold[level]);
-        this.setMana(enemyMana[level]);
-        this.setExperience(enemyExp[level]);
+    ArrayList<String> enemyName = new ArrayList();
+    ArrayList<Double> enemyHealth = new ArrayList();
+    ArrayList<Double> enemyDamage = new ArrayList();
+    ArrayList<Integer> enemyGold = new ArrayList();
+    ArrayList<Integer> enemyMana = new ArrayList();
+    ArrayList<Integer> enemyExp = new ArrayList();
+
+    public Enemy(int level) {
+        this.setEnemies();
+        Skills[] enemySkills = new Skills[]{new EnemySkills((Double)this.enemyDamage.get(0), 0), new EnemySkills((Double)this.enemyDamage.get(1), 1), new EnemySkills((Double)this.enemyDamage.get(0), 2), new EnemySkills((Double)this.enemyDamage.get(3), 3)};
+        this.setName((String)this.enemyName.get(level));
+        this.setHealth((Double)this.enemyHealth.get(level));
+        this.setDamage((Double)this.enemyDamage.get(level));
+        this.setMana((Integer)this.enemyMana.get(level));
+        this.setGold((Integer)this.enemyGold.get(level));
+        this.setExperience((Integer)this.enemyExp.get(level));
         this.setSkill(enemySkills[level]);
     }
     

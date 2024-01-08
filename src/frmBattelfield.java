@@ -33,8 +33,9 @@ public class frmBattelfield extends javax.swing.JFrame {
     int battlefieldPMM = player.getMana();
     
     public frmBattelfield() {
+        this.battlefieldPMH = player.getHealth();
+        this.battlefieldPMM = player.getMana();
         setBackground();
-        
         initComponents();
         setLocationRelativeTo(null);
         cmbPlayerSkills.setModel(model);
@@ -152,7 +153,14 @@ public class frmBattelfield extends javax.swing.JFrame {
         // Kullanıcının seçtiği seçeneği yazdırın
         if (selectedOptionIndex != JOptionPane.CLOSED_OPTION) {
             if(selectedOptionIndex == 0){ 
-                
+                try {
+                    sound.close();
+                } catch (IOException var4) {
+                    Logger.getLogger(frmStart.class.getName()).log(Level.SEVERE, (String)null, var4);
+                }
+
+                clip.close();
+                clip.stop();
             }      
         } else {
             System.out.println("Hiçbir seçenek seçilmedi.");
@@ -404,9 +412,13 @@ public class frmBattelfield extends javax.swing.JFrame {
             player.setExperience(player.getExperience()+enemy.getExperience());
             if(player.getExperience()>=player.getLevel()*100){
                 player.setLevel(player.getLevel()+1);
+                battlefieldPMH +=5;
+                battlefieldPMM +=5;
                 // 2 seviye birden atlama ihtimaline karşılık önlem
                 if(player.getExperience()>=player.getLevel()*100){
                     player.setLevel(player.getLevel()+1);
+                    battlefieldPMH +=5;
+                    battlefieldPMM +=5;
                 }
             }
             wonDialog();
@@ -443,9 +455,13 @@ public class frmBattelfield extends javax.swing.JFrame {
             player.setExperience(player.getExperience()+enemy.getExperience());
             if(player.getExperience()>=player.getLevel()*100){
                 player.setLevel(player.getLevel()+1);
+                battlefieldPMH +=5;
+                battlefieldPMM +=5;
                 // 2 seviye birden atlama ihtimaline karşılık önlem
                 if(player.getExperience()>=player.getLevel()*100){
                     player.setLevel(player.getLevel()+1);
+                    battlefieldPMH +=5;
+                    battlefieldPMM +=5;
                 }
             }
             wonDialog();
