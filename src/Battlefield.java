@@ -9,10 +9,11 @@ public class Battlefield extends frmBattelfield{
     }
 
     public Character playerAttack() {
-        this.enemy.setHealth(this.enemy.getHealth() - this.player.getDamage());
-        return this.enemy;
+        enemy.setHealth(this.enemy.getHealth() - this.player.getDamage());
+        return enemy;
     }
-
+// this leri temizleyin 
+    
     public Character playerSkill(int ComboBoxİndex) {
         if (this.player.skills[ComboBoxİndex].mana <= this.player.getMana()) {
             this.enemy.setHealth(this.enemy.getHealth() - this.player.skills[ComboBoxİndex].damage);
