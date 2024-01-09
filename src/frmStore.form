@@ -27,6 +27,8 @@
               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               <Component id="btnSkillStore" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+              <Component id="lblSkillStoreErrorMassage" min="-2" pref="318" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Component id="btnCamp" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
           </Group>
@@ -113,6 +115,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnCamp" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSkillStore" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblSkillStoreErrorMassage" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="lblerrorMassage" min="-2" max="-2" attributes="0"/>
@@ -260,6 +263,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblerrorMassage">
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblSkillStoreErrorMassage">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="."/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

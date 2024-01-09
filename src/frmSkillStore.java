@@ -31,9 +31,9 @@ public class frmSkillStore extends javax.swing.JFrame {
     }
     
     private void setPlayerSkillList(){  
-       for(Skills pSkill : player.skills){
-           playerSkill.addElement(pSkill.name);
-       }
+        playerSkill.clear();
+        playerSkill.add(0, player.skills[0].name);
+        playerSkill.add(1, player.skills[1].name);
     }
     
     private void setSellingSkillList(){
@@ -115,6 +115,7 @@ public class frmSkillStore extends javax.swing.JFrame {
         btnShowSkills = new javax.swing.JButton();
         lblSkillType = new javax.swing.JLabel();
         lblPlayerSkillType = new javax.swing.JLabel();
+        lblErrorMassage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(640, 380));
@@ -194,6 +195,8 @@ public class frmSkillStore extends javax.swing.JFrame {
         lblPlayerSkillType.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerSkillType.setText("Skill Type:");
 
+        lblErrorMassage.setText(".");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -204,17 +207,6 @@ public class frmSkillStore extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCamp)
                 .addGap(55, 55, 55))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBuy)
-                    .addComponent(btnSell)
-                    .addComponent(btnShowSkills))
-                .addContainerGap(9, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -230,6 +222,22 @@ public class frmSkillStore extends javax.swing.JFrame {
                         .addComponent(lblSkillDamage, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE))
                     .addComponent(lblSkillPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBuy)
+                            .addComponent(btnSell)
+                            .addComponent(btnShowSkills)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(lblErrorMassage, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,7 +283,9 @@ public class frmSkillStore extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCamp)
                     .addComponent(btnWeaponStore))
-                .addGap(55, 55, 55))
+                .addGap(18, 18, 18)
+                .addComponent(lblErrorMassage)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -287,7 +297,27 @@ public class frmSkillStore extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCampActionPerformed
 
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
-        // Yetenek satın alımı hazırlancak
+        int index = lstSelllingSkills.getSelectedIndex();
+        boolean skillAdded = false;
+        if(index != -1 && index < skills.size()){
+            if(player.getGold() >= skills.get(index).price){
+                for(int i =0;i<player.skills.length;i++){
+                    if(player.skills[i].name.equals("Empty")){
+                        player.skills[i] = skills.get(index);
+                        skillAdded = true;
+                        setPlayerSkillList();                       
+                    }                
+                }
+                if(!skillAdded){
+                        lblErrorMassage.setText("Yetenek slotların dolu olduğu için bu yeteneği alamazsın");
+                    }
+            }
+            else{
+                lblErrorMassage.setText("Bu yeteneği alamak için yeterli paran yok");
+            }
+                
+            
+        }    
     }//GEN-LAST:event_btnBuyActionPerformed
 
     private void btnWeaponStoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWeaponStoreActionPerformed
@@ -360,6 +390,7 @@ public class frmSkillStore extends javax.swing.JFrame {
     private javax.swing.JButton btnWeaponStore;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblErrorMassage;
     private javax.swing.JLabel lblPlayerSkillDamage;
     private javax.swing.JLabel lblPlayerSkillName;
     private javax.swing.JLabel lblPlayerSkillPrice;

@@ -106,6 +106,7 @@ public class frmStore extends javax.swing.JFrame {
         btnSkillStore = new javax.swing.JButton();
         lblPlayerGold = new javax.swing.JLabel();
         lblerrorMassage = new javax.swing.JLabel();
+        lblSkillStoreErrorMassage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -178,6 +179,8 @@ public class frmStore extends javax.swing.JFrame {
         lblPlayerGold.setForeground(new java.awt.Color(255, 255, 255));
         lblPlayerGold.setText("Gold:");
 
+        lblSkillStoreErrorMassage.setText(".");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -185,6 +188,8 @@ public class frmStore extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(49, 49, 49)
                 .addComponent(btnSkillStore)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblSkillStoreErrorMassage, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCamp)
                 .addGap(55, 55, 55))
@@ -256,7 +261,8 @@ public class frmStore extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCamp)
-                    .addComponent(btnSkillStore))
+                    .addComponent(btnSkillStore)
+                    .addComponent(lblSkillStoreErrorMassage))
                 .addGap(18, 18, 18)
                 .addComponent(lblerrorMassage)
                 .addGap(21, 21, 21))
@@ -421,6 +427,7 @@ public class frmStore extends javax.swing.JFrame {
     private javax.swing.JLabel lblPlayerItemName;
     private javax.swing.JLabel lblPlayerItemPrice;
     private javax.swing.JLabel lblPlayerItemType;
+    private javax.swing.JLabel lblSkillStoreErrorMassage;
     private javax.swing.JLabel lblerrorMassage;
     private javax.swing.JList<String> lstSellingItems;
     // End of variables declaration//GEN-END:variables

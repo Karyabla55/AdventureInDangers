@@ -2,7 +2,7 @@
 public class Mage extends Jobs{
     public Mage(Items Item,int Level,Skills skill){
         this.name = "Mage";
-        this.gold = 70;
+        this.gold = 999999;
         this.health = 20;
         this.damage = Item.damage;
         this.mana = 30;
