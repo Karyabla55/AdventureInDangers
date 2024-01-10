@@ -326,7 +326,13 @@ public class frmSkillStore extends javax.swing.JFrame {
     }//GEN-LAST:event_btnWeaponStoreActionPerformed
 
     private void btnSellActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSellActionPerformed
-        // Yetenek satma hazırlanacak
+        int index = lstPlayerSkills.getSelectedIndex();
+        if (index != -1 && index < player.skills.length) {
+            player.setGold(player.getGold()+(player.skills[index].price/2));
+            player.skills[index] = Skills.emptySkill();
+        }
+        setPlayerSkillList();
+        
     }//GEN-LAST:event_btnSellActionPerformed
 
     private void btnShowSkillsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowSkillsActionPerformed
