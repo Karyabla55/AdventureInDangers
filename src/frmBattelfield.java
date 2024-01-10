@@ -420,6 +420,7 @@ public class frmBattelfield extends javax.swing.JFrame {
             lblActionEvents.setText("Düşman sana "+enemy.getDamage()+" vurdu");
             lblPlayerHit2.setText("-"+Integer.toString((int)player.getDamage()));
             prgbPlayerHealth.setValue((int)player.getHealth());
+            prgbEnemyMana.setValue(enemy.getMana());
             if(player.getHealth()<=0){
                 loseDialog();
                 player.setExperience(player.getExperience()/2);

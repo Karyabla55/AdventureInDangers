@@ -80,7 +80,7 @@ public class frmStart extends javax.swing.JFrame {
 
         lblGameName2.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
         lblGameName2.setForeground(new java.awt.Color(169, 96, 236));
-        lblGameName2.setText("İn");
+        lblGameName2.setText("In");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 3, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(132, 16, 18));

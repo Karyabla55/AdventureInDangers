@@ -35,11 +35,11 @@ public class Enemy extends Character{
         enemyHealth.add(75.0);
         enemyHealth.add(1500.0);
         
+        enemyDamage.add(10.00);
+        enemyDamage.add(15.0);
+        enemyDamage.add(20.0);
         enemyDamage.add(40.0);
-        enemyDamage.add(35.0);
-        enemyDamage.add(70.0);
-        enemyDamage.add(45.0);
-        enemyDamage.add(70.0);
+        enemyDamage.add(90.0);
         
         enemyGold.add(10);
         enemyGold.add(20);

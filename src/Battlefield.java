@@ -10,6 +10,10 @@ public class Battlefield extends frmBattelfield{
 
     public Character playerAttack() {
         enemy.setHealth(this.enemy.getHealth() - this.player.getDamage());
+        if(player.getMana()< battlefieldPMM){
+            player.setMana(player.getMana()+5);
+        }
+        
         return enemy;
     }
 // this leri temizleyin 
