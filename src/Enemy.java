@@ -10,6 +10,7 @@ public class Enemy extends Character{
     ArrayList<Integer> enemyMana = new ArrayList();
     ArrayList<Integer> enemyExp = new ArrayList();
     Skills[] enemySkills;
+    
     public Enemy(int level) {
         setEnemies();
         setEnemySkills();

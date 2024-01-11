@@ -3,7 +3,7 @@ public abstract class Skills {
     String name;
     int price;
     int mana;
-    double damage ;
+    double damage;
     String type;
     
     public static Skills emptySkill(){

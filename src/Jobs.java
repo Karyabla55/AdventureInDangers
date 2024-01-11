@@ -9,6 +9,4 @@ public abstract class Jobs {
     boolean holdWeapon;
     Items item;
     Skills skills;
-    
-    
 }

@@ -31,14 +31,14 @@ public class Battlefield extends frmBattelfield{
     }
 
     public Character enemyBattle() {
-        if (this.enemy.getSkill().mana <= this.enemy.getMana()) {
+        if (enemy.getSkill().mana <= enemy.getMana()) {
             this.player.setHealth(this.player.getHealth() - this.enemy.getSkill().damage);
             this.enemy.setMana(this.enemy.getMana() - this.enemy.getSkill().mana);
         } else {
             this.player.setHealth(this.player.getHealth() - this.enemy.getDamage());
         }
 
-        return this.player;
+        return player;
     }
 
     public void setPlayer(Character player) {

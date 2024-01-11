@@ -212,12 +212,12 @@ public class frmBattelfield extends javax.swing.JFrame {
             if(selectedOptionIndex == 0){
                 frmCamp.Run(player);
                 try {
-            sound.close();
-        } catch (IOException ex) {
-            Logger.getLogger(frmStart.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        clip.close();
-        clip.stop();
+                    sound.close();
+                } catch (IOException ex) {
+                    Logger.getLogger(frmStart.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            clip.close();
+            clip.stop();
             this.dispose();
             }
             

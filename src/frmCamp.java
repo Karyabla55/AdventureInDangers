@@ -18,6 +18,7 @@ public class frmCamp extends javax.swing.JFrame {
     private AudioInputStream sound;
     public static Character player;
     private BufferedImage backgroundImage;
+    
     public frmCamp() {
         setBackground();
         setBackgroundMusic();

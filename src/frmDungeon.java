@@ -4,13 +4,11 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 
 public class frmDungeon extends javax.swing.JFrame {
-    Random rand = new Random();
     public static Character player;
     public static Character enemy;
     private BufferedImage backgroundImage;
