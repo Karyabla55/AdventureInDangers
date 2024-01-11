@@ -29,7 +29,7 @@ public class frmBattelfield extends javax.swing.JFrame {
     private BufferedImage backgroundImage;
     DefaultComboBoxModel model = new DefaultComboBoxModel();
     
-    double battlefieldPMH = player.getHealth();
+    double battlefieldPMH = player.getHealth(); 
     int battlefieldPMM = player.getMana();
     
     public frmBattelfield() {

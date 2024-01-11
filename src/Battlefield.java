@@ -9,33 +9,33 @@ public class Battlefield extends frmBattelfield{
     }
 
     public Character playerAttack() {
-        enemy.setHealth(this.enemy.getHealth() - this.player.getDamage());
+        enemy.setHealth(enemy.getHealth() - player.getDamage());
         if(player.getMana()< battlefieldPMM){
             player.setMana(player.getMana()+5);
         }
         
         return enemy;
     }
-// this leri temizleyin 
+
     
     public Character playerSkill(int ComboBoxİndex) {
-        if (this.player.skills[ComboBoxİndex].mana <= this.player.getMana()) {
-            this.enemy.setHealth(this.enemy.getHealth() - this.player.skills[ComboBoxİndex].damage);
-            this.player.setMana(this.player.getMana() - this.player.skills[ComboBoxİndex].mana);
+        if (player.skills[ComboBoxİndex].mana <= player.getMana()) {
+            enemy.setHealth(enemy.getHealth() - player.skills[ComboBoxİndex].damage);
+            player.setMana(player.getMana() - player.skills[ComboBoxİndex].mana);
         } else {
-            this.notEnoughManaDialog();
-            this.enemy.setHealth(this.enemy.getHealth() - this.player.getDamage());
+            notEnoughManaDialog();
+            enemy.setHealth(enemy.getHealth() - player.getDamage());
         }
 
-        return this.enemy;
+        return enemy;
     }
 
     public Character enemyBattle() {
         if (enemy.getSkill().mana <= enemy.getMana()) {
-            this.player.setHealth(this.player.getHealth() - this.enemy.getSkill().damage);
-            this.enemy.setMana(this.enemy.getMana() - this.enemy.getSkill().mana);
+            player.setHealth(player.getHealth() - enemy.getSkill().damage);
+            enemy.setMana(enemy.getMana() - enemy.getSkill().mana);
         } else {
-            this.player.setHealth(this.player.getHealth() - this.enemy.getDamage());
+            player.setHealth(player.getHealth() - enemy.getDamage());
         }
 
         return player;
@@ -46,7 +46,7 @@ public class Battlefield extends frmBattelfield{
     }
 
     public Character getEnemy() {
-        return this.enemy;
+        return enemy;
     }
 
     public void setEnemy(Character enemy) {
