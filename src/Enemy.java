@@ -30,10 +30,10 @@ public class Enemy extends Character{
         enemyName.add("cadı");
         enemyName.add("Dünyanın Sonu");
         
+        enemyHealth.add(75.0);
         enemyHealth.add(100.0);
         enemyHealth.add(150.0);
-        enemyHealth.add(200.0);
-        enemyHealth.add(75.0);
+        enemyHealth.add(200.0);      
         enemyHealth.add(1500.0);
         
         enemyDamage.add(10.00);

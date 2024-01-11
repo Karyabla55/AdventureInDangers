@@ -274,12 +274,12 @@ public class frmStore extends javax.swing.JFrame {
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
         int index = lstSellingItems.getSelectedIndex();
         if(index != -1 && index < weapons.size()){
-            if(weapons.get(index).Type == player.getWeaponType()){
+            if(weapons.get(index).Type.equals(player.getWeaponType())){
                 if(player.isHoldWeapon() == false){
                     if(weapons.get(index).price <= player.getGold()){
-                    player.setGold(player.getGold()-weapons.get(index).price);
-                    player.setItem(weapons.get(index));
-                    player.setDamage(weapons.get(index).damage);
+                        player.setGold(player.getGold()-weapons.get(index).price);
+                        player.setItem(weapons.get(index));
+                        player.setDamage(weapons.get(index).damage);
                         switch (player.getJobName()) {
                             case "Mage":
                                 for(Skills pSkill: player.skills){

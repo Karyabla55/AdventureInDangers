@@ -233,7 +233,7 @@ public class frmCamp extends javax.swing.JFrame {
         try {
             sound.close();
         } catch (IOException ex) {
-            Logger.getLogger(frmStart.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("müzik kapanmadı");
         }
         clip.close();
         clip.stop();
