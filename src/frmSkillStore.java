@@ -304,8 +304,9 @@ public class frmSkillStore extends javax.swing.JFrame {
                 for(int i =0;i<player.skills.length;i++){
                     if(player.skills[i].name.equals("Empty")){
                         player.skills[i] = skills.get(index);
-                        skillAdded = true;
-                        setPlayerSkillList();                       
+                        skillAdded = true;                        
+                        setPlayerSkillList();
+                        break;
                     }                
                 }
                 if(!skillAdded){
